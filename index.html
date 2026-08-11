@@ -17,7 +17,6 @@
   --rosa:#d81b60;
   --rosa2:#ec407a;
   --verde:#c8e6c9;
-  --verdeF:#1b5e20;
   --vermelho:#e53935;
   --cinza:#f4f5f7;
   --texto:#2d2d2d;
@@ -67,7 +66,7 @@ header p{
   box-shadow:0 4px 18px rgba(0,0,0,.08);
 }
 
-/* FOTO E PRÊMIO */
+/* PRÊMIO */
 
 .hero{
   display:grid;
@@ -108,6 +107,28 @@ header p{
   border-radius:12px;
 }
 
+.pix-copia{
+  max-width:700px;
+  margin:15px auto;
+  padding:15px;
+  background:#f7f7f7;
+  border:1px solid #ddd;
+  border-radius:10px;
+  word-break:break-all;
+  text-align:left;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.pix-ok{
+  display:none;
+  color:#2e7d32;
+  font-weight:bold;
+  margin:8px 0 15px;
+}
+
+/* BOTÕES */
+
 .btn{
   border:0;
   border-radius:10px;
@@ -116,11 +137,18 @@ header p{
   cursor:pointer;
   text-decoration:none;
   display:inline-block;
+  font-size:1rem;
 }
 
 .btn-whatsapp{
   background:#25D366;
   color:#fff;
+}
+
+.btn-pix{
+  background:var(--rosa);
+  color:#fff;
+  margin-bottom:10px;
 }
 
 .btn-admin{
@@ -345,6 +373,7 @@ footer{
   .admin-tools{
     grid-template-columns:1fr;
   }
+
 }
 
 </style>
@@ -354,9 +383,7 @@ footer{
 
 <header>
 
-<h1>
-🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL
-</h1>
+<h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL</h1>
 
 <p>
 Ajude na luta contra o câncer e concorra a uma
@@ -419,13 +446,39 @@ R$ 10,00 por número
   alt="QR Code PIX"
 >
 
+<h3 style="color:#d81b60;">
+📋 PIX Copia e Cola
+</h3>
+
+<p style="color:#666;">
+Se preferir, copie o código abaixo e cole no aplicativo do seu banco:
+</p>
+
+<div class="pix-copia">
+<span id="pixCodigo">00020126360014br.gov.bcb.pix0114+55919831515035204000053039865802BR5910NETO RUSSO6009Sao Paulo610901227-20062220518daqr548508072446326304AC6D</span>
+</div>
+
+<button
+  id="copiarPix"
+  class="btn btn-pix">
+📋 COPIAR CÓDIGO PIX
+</button>
+
+<div
+  id="pixCopiado"
+  class="pix-ok">
+✅ Código PIX copiado!
+</div>
+
+<br>
+
 <a
   class="btn btn-whatsapp"
   href="https://wa.me/5591983151503"
   target="_blank"
   rel="noopener"
 >
-📲 Enviar comprovante
+📲 Enviar comprovante pelo WhatsApp
 </a>
 
 </section>
@@ -481,18 +534,12 @@ Clique em um número verde para solicitar a reserva pelo WhatsApp.
 <div class="legenda">
 
 <span>
-<span
-  class="dot"
-  style="background:#c8e6c9">
-</span>
+<span class="dot" style="background:#c8e6c9"></span>
 Disponível
 </span>
 
 <span>
-<span
-  class="dot"
-  style="background:#e53935">
-</span>
+<span class="dot" style="background:#e53935"></span>
 Vendido
 </span>
 
@@ -512,7 +559,7 @@ Conectando ao Firebase...
 </section>
 
 
-<!-- PAINEL ADMINISTRATIVO -->
+<!-- PAINEL ADMIN -->
 
 <section
   id="adminPanel"
@@ -527,21 +574,17 @@ Administrador:
 
 <div class="notice">
 
-Digite um número, vários números separados por vírgula
-ou um intervalo.
+Digite um número, vários números separados por vírgula ou um intervalo.
 
 <br><br>
 
 Exemplos:
 
-<strong>12</strong>
-
-<strong>12,18,25</strong>
-
+<strong>12</strong><br>
+<strong>12,18,25</strong><br>
 <strong>40-55</strong>
 
 </div>
-
 
 <div class="admin-tools">
 
@@ -565,10 +608,7 @@ Exemplos:
 
 </div>
 
-
-<div
-  class="row"
-  style="margin-top:10px">
+<div class="row" style="margin-top:10px;">
 
 <button
   id="logoutBtn"
@@ -586,7 +626,9 @@ Sair do painel
 <footer>
 
 ❤️ Todo o valor arrecadado será destinado à Josiene Amaral.
+
 <br><br>
+
 Juntos podemos fazer a diferença.
 
 </footer>
@@ -646,14 +688,12 @@ Cancelar
 
 <p
   id="loginMsg"
-  style="color:#c62828">
+  style="color:#c62828;">
 </p>
 
 </div>
 </div>
 
-
-<!-- FIREBASE -->
 
 <script type="module">
 
@@ -677,7 +717,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
 
-/* CONFIGURAÇÃO DO SEU FIREBASE */
+/* FIREBASE */
 
 const firebaseConfig = {
 
@@ -708,20 +748,16 @@ const firebaseConfig = {
 };
 
 
-/* UID DO ADMINISTRADOR */
+/* ADMIN */
 
 const ADMIN_UID =
 "lioq8PxzEsQ4uKHC6YLAXmHXEK93";
 
 
-/* CONFIGURAÇÃO DA RIFA */
-
 const TOTAL = 300;
 
 const VALOR = 10;
 
-
-/* INICIAR FIREBASE */
 
 const app =
 initializeApp(firebaseConfig);
@@ -776,7 +812,86 @@ let isAdmin =
 false;
 
 
-/* FORMATAR NÚMERO */
+/* PIX COPIA E COLA */
+
+document
+.getElementById("copiarPix")
+.addEventListener(
+  "click",
+  async () => {
+
+    const codigo =
+    document
+    .getElementById("pixCodigo")
+    .innerText
+    .trim();
+
+    try{
+
+      await navigator
+      .clipboard
+      .writeText(codigo);
+
+      const aviso =
+      document
+      .getElementById("pixCopiado");
+
+      aviso.style.display =
+      "block";
+
+      setTimeout(
+        () => {
+
+          aviso.style.display =
+          "none";
+
+        },
+        3000
+      );
+
+    }
+
+    catch(erro){
+
+      const textarea =
+      document.createElement("textarea");
+
+      textarea.value =
+      codigo;
+
+      document.body
+      .appendChild(textarea);
+
+      textarea.select();
+
+      document.execCommand("copy");
+
+      textarea.remove();
+
+      const aviso =
+      document
+      .getElementById("pixCopiado");
+
+      aviso.style.display =
+      "block";
+
+      setTimeout(
+        () => {
+
+          aviso.style.display =
+          "none";
+
+        },
+        3000
+      );
+
+    }
+
+  }
+);
+
+
+/* FORMATAR */
 
 function formatNumero(n){
 
@@ -785,7 +900,7 @@ function formatNumero(n){
 }
 
 
-/* CRIAR NÚMEROS */
+/* GRID */
 
 function desenharGrid(){
 
@@ -804,16 +919,13 @@ function desenharGrid(){
     botao.textContent =
     formatNumero(i);
 
-    botao.dataset.numero =
-    i;
-
 
     botao.addEventListener(
       "click",
       async () => {
 
 
-        /* ADMINISTRADOR */
+        /* ADMIN */
 
         if(isAdmin){
 
@@ -895,7 +1007,7 @@ function desenharGrid(){
 }
 
 
-/* ATUALIZAR CONTADORES */
+/* CONTADORES */
 
 function atualizarResumo(){
 
@@ -939,7 +1051,7 @@ function atualizarResumo(){
 }
 
 
-/* SINCRONIZAÇÃO FIREBASE */
+/* SINCRONIZAÇÃO */
 
 onValue(
 
@@ -999,7 +1111,7 @@ onValue(
 );
 
 
-/* ABRIR ADMIN */
+/* BOTÃO ADMIN */
 
 document
 .getElementById("adminFab")
@@ -1185,8 +1297,6 @@ function parseNumbers(texto){
       continue;
 
 
-    /* INTERVALO */
-
     if(item.includes("-")){
 
 
@@ -1235,8 +1345,6 @@ function parseNumbers(texto){
 
     }
 
-
-    /* NÚMERO ÚNICO */
 
     else{
 
@@ -1342,7 +1450,7 @@ document
 };
 
 
-/* LIBERAR NÚMEROS */
+/* LIBERAR */
 
 document
 .getElementById("releaseNumbers")
