@@ -6,186 +6,345 @@
 
 <title>Rifa Solidária - Josiene Amaral</title>
 
+<meta
+  name="description"
+  content="Rifa solidária em prol de Josiene Amaral. Bola Oficial da Copa do Mundo autografada por Dunga."
+>
+
 <style>
 
+:root{
+  --rosa:#d81b60;
+  --rosa2:#ec407a;
+  --verde:#c8e6c9;
+  --verdeF:#1b5e20;
+  --vermelho:#e53935;
+  --cinza:#f4f5f7;
+  --texto:#2d2d2d;
+  --ouro:#ffca28;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f5f5;
-    color:#333;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cinza);
+  color:var(--texto);
 }
 
 header{
-    background:linear-gradient(135deg,#d81b60,#ec407a);
-    color:white;
-    text-align:center;
-    padding:30px 20px;
+  background:linear-gradient(135deg,var(--rosa),var(--rosa2));
+  color:#fff;
+  text-align:center;
+  padding:32px 18px;
 }
 
 header h1{
-    margin-bottom:10px;
+  margin:0 0 10px;
+  font-size:clamp(1.55rem,4vw,2.4rem);
+}
+
+header p{
+  max-width:850px;
+  margin:auto;
+  line-height:1.55;
 }
 
 .container{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
+  max-width:1150px;
+  margin:auto;
+  padding:18px;
 }
 
 .card{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:20px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  margin:0 0 18px;
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
 }
 
-.foto{
-    text-align:center;
+/* FOTO E PRÊMIO */
+
+.hero{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:22px;
+  align-items:center;
 }
 
-.foto img{
-    width:95%;
-    max-width:700px;
-    border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,.25);
+.hero img{
+  width:100%;
+  max-height:480px;
+  object-fit:contain;
+  border-radius:16px;
 }
 
-.destaque{
-    text-align:center;
-    margin-top:15px;
-    color:#d81b60;
-    font-size:22px;
-    font-weight:bold;
+.hero h2{
+  color:var(--rosa);
+  margin-top:0;
 }
 
-.pix{
-    text-align:center;
+.preco{
+  font-size:2rem;
+  font-weight:800;
+  color:var(--rosa);
 }
 
-.pix h2{
-    color:#d81b60;
-    margin-bottom:10px;
+/* PIX */
+
+.pixbox{
+  text-align:center;
 }
 
 .qrcode{
-    max-width:300px;
-    width:100%;
-    display:block;
-    margin:20px auto;
+  width:240px;
+  max-width:80%;
+  display:block;
+  margin:16px auto;
+  border-radius:12px;
 }
 
 .btn{
-    display:inline-block;
-    background:#25D366;
-    color:white;
-    text-decoration:none;
-    padding:12px 20px;
-    border-radius:8px;
-    font-weight:bold;
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
 }
 
-.contador{
-    text-align:center;
-    font-size:20px;
-    margin-bottom:20px;
-    font-weight:bold;
+.btn-whatsapp{
+  background:#25D366;
+  color:#fff;
+}
+
+.btn-admin{
+  background:#222;
+  color:#fff;
+}
+
+.btn-danger{
+  background:#c62828;
+  color:#fff;
+}
+
+.btn-light{
+  background:#eceff1;
+  color:#222;
+}
+
+/* ESTATÍSTICAS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.stat{
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:14px;
+  text-align:center;
+  padding:14px;
+}
+
+.stat strong{
+  font-size:1.4rem;
+  display:block;
+  color:var(--rosa);
+}
+
+.progress{
+  height:24px;
+  background:#e0e0e0;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.progress > div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#43a047,#7cb342);
+  transition:.35s;
+}
+
+/* NÚMEROS */
+
+.legenda{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin:13px 0;
+  font-size:.95rem;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  display:inline-block;
+  border-radius:4px;
+  vertical-align:-2px;
+  margin-right:5px;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(10,1fr);
-    gap:6px;
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:6px;
 }
 
 .numero{
-    background:#c8e6c9;
-    padding:12px;
-    border-radius:8px;
-    text-align:center;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.2s;
+  border:0;
+  padding:11px 4px;
+  border-radius:8px;
+  font-weight:800;
+  cursor:pointer;
+  background:var(--verde);
+  color:#173c1a;
+  transition:.15s;
 }
 
 .numero:hover{
-    transform:scale(1.05);
+  transform:translateY(-1px);
+  filter:brightness(.97);
 }
 
-.vendido{
-    background:#e53935 !important;
-    color:white;
+.numero.vendido{
+  background:var(--vermelho);
+  color:white;
+  cursor:not-allowed;
 }
 
-.barra-fundo{
-    width:100%;
-    height:30px;
-    background:#ddd;
-    border-radius:20px;
-    overflow:hidden;
+.numero.admin-mode{
+  cursor:pointer;
 }
 
-.barra{
-    height:100%;
-    width:0%;
-    background:#4caf50;
-    transition:.5s;
+.status-sync{
+  text-align:center;
+  color:#666;
+  font-size:.9rem;
+  margin-top:10px;
+}
+
+/* ADMIN */
+
+.admin-panel{
+  display:none;
+}
+
+.admin-panel.open{
+  display:block;
+}
+
+.admin-tools{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:8px;
+  align-items:center;
+}
+
+.notice{
+  background:#fff8e1;
+  border-left:4px solid var(--ouro);
+  padding:12px;
+  border-radius:8px;
+  margin:12px 0;
+}
+
+.field{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  margin:6px 0 10px;
+  font-size:1rem;
+}
+
+.row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* BOTÃO ADMIN */
+
+.fab{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:0;
+  background:var(--rosa);
+  color:white;
+  font-size:24px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  cursor:pointer;
+}
+
+/* LOGIN */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:1000;
+  padding:18px;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modal-box{
+  width:min(520px,100%);
+  background:#fff;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 10px 35px rgba(0,0,0,.3);
+}
+
+.modal-box h3{
+  margin-top:0;
+  color:var(--rosa);
 }
 
 footer{
-    text-align:center;
-    padding:30px;
-    color:#777;
+  text-align:center;
+  color:#666;
+  padding:28px 15px 80px;
 }
 
-#adminPanel{
-    display:none;
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.3);
-    z-index:999;
-}
+/* CELULAR */
 
-#adminPanel input{
-    width:100px;
-    padding:8px;
-    margin-bottom:10px;
-}
+@media(max-width:760px){
 
-#adminPanel button{
-    padding:8px;
-    margin:3px;
-}
+  .hero{
+    grid-template-columns:1fr;
+  }
 
-.admin-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:55px;
-    height:55px;
-    border:none;
-    border-radius:50%;
-    background:#d81b60;
-    color:white;
-    font-size:22px;
-    cursor:pointer;
-}
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-@media(max-width:700px){
+  .grid{
+    grid-template-columns:repeat(5,1fr);
+  }
 
-    .grid{
-        grid-template-columns:repeat(5,1fr);
-    }
-
+  .admin-tools{
+    grid-template-columns:1fr;
+  }
 }
 
 </style>
@@ -195,271 +354,1067 @@ footer{
 
 <header>
 
-<h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL</h1>
+<h1>
+🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL
+</h1>
 
 <p>
 Ajude na luta contra o câncer e concorra a uma
 <strong>Bola Oficial da Copa do Mundo</strong>,
-autografada por
-<strong>Dunga</strong>.
+autografada por <strong>Dunga</strong>,
+capitão do Tetracampeonato Mundial de 1994.
 </p>
 
 </header>
 
-<div class="container">
 
-<div class="card foto">
+<main class="container">
 
-<img src="bola.jpg" alt="Bola autografada por Dunga">
+<!-- PRÊMIO -->
 
-<div class="destaque">
-⚽ Bola Oficial da Copa do Mundo<br>
-✍️ Autografada por Dunga
-</div>
+<section class="card hero">
 
-</div>
+<img
+  src="bola.jpg"
+  alt="Bola da rifa autografada por Dunga"
+>
 
-<div class="card pix">
+<div>
 
-<h2>💖 Faça a diferença</h2>
-
-<p><strong>Valor:</strong> R$ 10,00 por número</p>
+<h2>🏆 Prêmio especial</h2>
 
 <p>
-<strong>PIX:</strong><br>
+<strong>Bola Oficial da Copa do Mundo</strong>
+autografada por Dunga.
+</p>
+
+<p>
+Todo o valor arrecadado será destinado à
+<strong>Josiene Amaral</strong>.
+</p>
+
+<div class="preco">
+R$ 10,00 por número
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PIX -->
+
+<section class="card pixbox">
+
+<h2>💖 Participe e ajude</h2>
+
+<p>
+<strong>Chave PIX:</strong><br>
 91 98315-1503
 </p>
 
-<img src="qrcode_pix.png" class="qrcode">
-
-<br>
+<img
+  src="qrcode_pix.png"
+  class="qrcode"
+  alt="QR Code PIX"
+>
 
 <a
-class="btn"
-href="https://wa.me/5591983151503"
-target="_blank">
-Enviar Comprovante
+  class="btn btn-whatsapp"
+  href="https://wa.me/5591983151503"
+  target="_blank"
+  rel="noopener"
+>
+📲 Enviar comprovante
 </a>
 
+</section>
+
+
+<!-- PROGRESSO -->
+
+<section class="card">
+
+<h2>📊 Andamento da rifa</h2>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="vendidos">0</strong>
+Vendidos
 </div>
 
-<div class="card">
+<div class="stat">
+<strong id="disponiveis">300</strong>
+Disponíveis
+</div>
 
-<h2>📊 Arrecadação</h2>
+<div class="stat">
+<strong id="arrecadado">R$ 0,00</strong>
+Arrecadado
+</div>
+
+<div class="stat">
+<strong id="percentual">0%</strong>
+Preenchida
+</div>
+
+</div>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+</section>
+
+
+<!-- NÚMEROS -->
+
+<section class="card">
+
+<h2>🎟️ Escolha seu número</h2>
 
 <p>
-Total arrecadado:
-<strong id="arrecadado">
-R$ 0,00
-</strong>
+Clique em um número verde para solicitar a reserva pelo WhatsApp.
 </p>
 
-<br>
+<div class="legenda">
 
-<div class="barra-fundo">
-<div id="barra" class="barra"></div>
-</div>
+<span>
+<span
+  class="dot"
+  style="background:#c8e6c9">
+</span>
+Disponível
+</span>
 
-</div>
-
-<div class="card">
-
-<div class="contador">
-
-Vendidos:
-<span id="vend">0</span>
-
-|
-
-Disponíveis:
-<span id="disp">300</span>
+<span>
+<span
+  class="dot"
+  style="background:#e53935">
+</span>
+Vendido
+</span>
 
 </div>
 
-<div class="grid" id="grid"></div>
+<div
+  id="grid"
+  class="grid">
+</div>
+
+<div
+  id="syncStatus"
+  class="status-sync">
+Conectando ao Firebase...
+</div>
+
+</section>
+
+
+<!-- PAINEL ADMINISTRATIVO -->
+
+<section
+  id="adminPanel"
+  class="card admin-panel">
+
+<h2>🔐 Painel administrativo</h2>
+
+<p>
+Administrador:
+<strong id="adminEmail"></strong>
+</p>
+
+<div class="notice">
+
+Digite um número, vários números separados por vírgula
+ou um intervalo.
+
+<br><br>
+
+Exemplos:
+
+<strong>12</strong>
+
+<strong>12,18,25</strong>
+
+<strong>40-55</strong>
 
 </div>
 
+
+<div class="admin-tools">
+
+<input
+  id="adminNumbers"
+  class="field"
+  placeholder="Ex.: 12,18,25 ou 40-55"
+>
+
+<button
+  id="markSold"
+  class="btn btn-danger">
+🔴 Marcar vendidos
+</button>
+
+<button
+  id="releaseNumbers"
+  class="btn btn-light">
+🟢 Liberar números
+</button>
+
 </div>
+
+
+<div
+  class="row"
+  style="margin-top:10px">
+
+<button
+  id="logoutBtn"
+  class="btn btn-admin">
+Sair do painel
+</button>
+
+</div>
+
+</section>
+
+</main>
+
 
 <footer>
 
-❤️ Todo valor arrecadado será destinado ao tratamento de Josiene Amaral.
+❤️ Todo o valor arrecadado será destinado à Josiene Amaral.
+<br><br>
+Juntos podemos fazer a diferença.
 
 </footer>
 
-<div id="adminPanel">
 
-<h3>Painel Admin</h3>
+<!-- BOTÃO ADMIN -->
 
-<input
-type="number"
-id="numeroAdmin"
-placeholder="Número">
-
-<br>
-
-<button onclick="marcarVendido()">
-Vender
+<button
+  id="adminFab"
+  class="fab"
+  title="Administrador">
+⚙️
 </button>
 
-<button onclick="liberarNumero()">
-Liberar
+
+<!-- LOGIN -->
+
+<div
+  id="loginModal"
+  class="modal">
+
+<div class="modal-box">
+
+<h3>🔐 Acesso administrativo</h3>
+
+<input
+  id="email"
+  class="field"
+  type="email"
+  autocomplete="username"
+  placeholder="E-mail do administrador"
+>
+
+<input
+  id="password"
+  class="field"
+  type="password"
+  autocomplete="current-password"
+  placeholder="Senha"
+>
+
+<div class="row">
+
+<button
+  id="loginBtn"
+  class="btn btn-admin">
+Entrar
+</button>
+
+<button
+  id="closeModal"
+  class="btn btn-light">
+Cancelar
 </button>
 
 </div>
 
-<button
-class="admin-btn"
-onclick="loginAdmin()">
-⚙️
-</button>
+<p
+  id="loginMsg"
+  style="color:#c62828">
+</p>
 
-<script>
+</div>
+</div>
 
-const SENHA_ADMIN = "Josi2026";
 
-let vendidos =
-JSON.parse(
-localStorage.getItem("rifaVendidos") || "[]"
-);
+<!-- FIREBASE -->
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+import {
+  getDatabase,
+  ref,
+  onValue,
+  set,
+  remove
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+
+
+/* CONFIGURAÇÃO DO SEU FIREBASE */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAIAcZ5S3yURjjzllWI97s4wz3Wl3k_a3A",
+
+  authDomain:
+  "rifa-dona-josi.firebaseapp.com",
+
+  databaseURL:
+  "https://rifa-dona-josi-default-rtdb.firebaseio.com",
+
+  projectId:
+  "rifa-dona-josi",
+
+  storageBucket:
+  "rifa-dona-josi.firebasestorage.app",
+
+  messagingSenderId:
+  "418787514631",
+
+  appId:
+  "1:418787514631:web:360fc51850940fe41e4da2",
+
+  measurementId:
+  "G-BJK5V47MX4"
+
+};
+
+
+/* UID DO ADMINISTRADOR */
+
+const ADMIN_UID =
+"lioq8PxzEsQ4uKHC6YLAXmHXEK93";
+
+
+/* CONFIGURAÇÃO DA RIFA */
+
+const TOTAL = 300;
+
+const VALOR = 10;
+
+
+/* INICIAR FIREBASE */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getDatabase(app);
+
+
+/* ELEMENTOS */
 
 const grid =
 document.getElementById("grid");
 
-function salvar(){
+const vendidosEl =
+document.getElementById("vendidos");
 
-    localStorage.setItem(
-        "rifaVendidos",
-        JSON.stringify(vendidos)
-    );
+const disponiveisEl =
+document.getElementById("disponiveis");
 
-    atualizar();
+const arrecadadoEl =
+document.getElementById("arrecadado");
+
+const percentualEl =
+document.getElementById("percentual");
+
+const progressBar =
+document.getElementById("progressBar");
+
+const syncStatus =
+document.getElementById("syncStatus");
+
+const adminPanel =
+document.getElementById("adminPanel");
+
+const adminEmail =
+document.getElementById("adminEmail");
+
+const modal =
+document.getElementById("loginModal");
+
+const loginMsg =
+document.getElementById("loginMsg");
+
+
+let vendidos =
+new Set();
+
+let isAdmin =
+false;
+
+
+/* FORMATAR NÚMERO */
+
+function formatNumero(n){
+
+  return String(n).padStart(3,"0");
+
 }
 
-function atualizar(){
 
-    document.getElementById("vend")
-    .innerText = vendidos.length;
+/* CRIAR NÚMEROS */
 
-    document.getElementById("disp")
-    .innerText = 300 - vendidos.length;
+function desenharGrid(){
 
-    const valor =
-    vendidos.length * 10;
+  grid.innerHTML = "";
 
-    document.getElementById("arrecadado")
-    .innerText =
-    valor.toLocaleString(
-        'pt-BR',
-        {
-            style:'currency',
-            currency:'BRL'
+  for(let i=1;i<=TOTAL;i++){
+
+    const botao =
+    document.createElement("button");
+
+    botao.className =
+    "numero" +
+    (vendidos.has(i) ? " vendido" : "") +
+    (isAdmin ? " admin-mode" : "");
+
+    botao.textContent =
+    formatNumero(i);
+
+    botao.dataset.numero =
+    i;
+
+
+    botao.addEventListener(
+      "click",
+      async () => {
+
+
+        /* ADMINISTRADOR */
+
+        if(isAdmin){
+
+          try{
+
+            if(vendidos.has(i)){
+
+              await remove(
+                ref(
+                  db,
+                  `vendidos/${formatNumero(i)}`
+                )
+              );
+
+            }
+
+            else{
+
+              await set(
+                ref(
+                  db,
+                  `vendidos/${formatNumero(i)}`
+                ),
+                true
+              );
+
+            }
+
+          }
+
+          catch(error){
+
+            console.error(error);
+
+            alert(
+              "Não foi possível alterar este número."
+            );
+
+          }
+
+          return;
+
         }
-    );
 
-    document.getElementById("barra")
-    .style.width =
-    ((vendidos.length/300)*100)+"%";
 
-}
+        /* VISITANTE */
 
-for(let i=1;i<=300;i++){
+        if(vendidos.has(i)){
 
-    const numero =
-    document.createElement("div");
+          alert(
+            `O número ${formatNumero(i)} já foi vendido.`
+          );
 
-    numero.id = "num-"+i;
+          return;
 
-    numero.className =
-    vendidos.includes(i)
-    ? "numero vendido"
-    : "numero";
-
-    numero.textContent =
-    String(i).padStart(3,"0");
-
-    numero.onclick = () => {
-
-        if(vendidos.includes(i)){
-            alert("Número já vendido.");
-            return;
         }
 
-        const msg =
-        `Olá! Gostaria de reservar o número ${String(i).padStart(3,'0')} da Rifa Solidária da Josiene Amaral.`;
+
+        const mensagem =
+        `Olá! Gostaria de reservar o número ${formatNumero(i)} da Rifa Solidária da Josiene Amaral.`;
+
 
         window.open(
-        `https://wa.me/5591983151503?text=${encodeURIComponent(msg)}`,
-        "_blank"
+
+          `https://wa.me/5591983151503?text=${encodeURIComponent(mensagem)}`,
+
+          "_blank"
+
         );
 
-    };
-
-    grid.appendChild(numero);
-
-}
-
-function loginAdmin(){
-
-    const senha =
-    prompt("Digite a senha:");
-
-    if(senha === SENHA_ADMIN){
-
-        document.getElementById("adminPanel")
-        .style.display = "block";
-
-    }else{
-
-        alert("Senha incorreta");
-
-    }
-
-}
-
-function marcarVendido(){
-
-    const n =
-    parseInt(
-    document.getElementById("numeroAdmin").value
+      }
     );
 
-    if(!n || n<1 || n>300) return;
 
-    if(!vendidos.includes(n)){
+    grid.appendChild(botao);
 
-        vendidos.push(n);
-
-        document
-        .getElementById("num-"+n)
-        .classList.add("vendido");
-
-        salvar();
-
-    }
+  }
 
 }
 
-function liberarNumero(){
 
-    const n =
-    parseInt(
-    document.getElementById("numeroAdmin").value
-    );
+/* ATUALIZAR CONTADORES */
+
+function atualizarResumo(){
+
+  const quantidade =
+  vendidos.size;
+
+
+  vendidosEl.textContent =
+  quantidade;
+
+
+  disponiveisEl.textContent =
+  TOTAL - quantidade;
+
+
+  arrecadadoEl.textContent =
+  (quantidade * VALOR)
+  .toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+
+  const percentual =
+  (quantidade / TOTAL) * 100;
+
+
+  percentualEl.textContent =
+  percentual
+  .toFixed(1)
+  .replace(".",",")
+  + "%";
+
+
+  progressBar.style.width =
+  percentual + "%";
+
+}
+
+
+/* SINCRONIZAÇÃO FIREBASE */
+
+onValue(
+
+  ref(db,"vendidos"),
+
+  snapshot => {
+
+    const dados =
+    snapshot.val() || {};
+
 
     vendidos =
-    vendidos.filter(x => x !== n);
+    new Set(
+
+      Object.keys(dados)
+
+      .filter(
+        chave =>
+        dados[chave] === true
+      )
+
+      .map(
+        chave =>
+        parseInt(chave,10)
+      )
+
+      .filter(
+        numero =>
+        Number.isInteger(numero) &&
+        numero >= 1 &&
+        numero <= TOTAL
+      )
+
+    );
+
+
+    atualizarResumo();
+
+    desenharGrid();
+
+
+    syncStatus.textContent =
+    "✅ Números sincronizados em tempo real.";
+
+  },
+
+
+  error => {
+
+    console.error(error);
+
+    syncStatus.textContent =
+    "⚠️ Não foi possível carregar os números.";
+
+  }
+
+);
+
+
+/* ABRIR ADMIN */
+
+document
+.getElementById("adminFab")
+.onclick = () => {
+
+  if(isAdmin){
+
+    adminPanel.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }
+
+  else{
+
+    modal.classList.add("open");
+
+  }
+
+};
+
+
+/* FECHAR LOGIN */
+
+document
+.getElementById("closeModal")
+.onclick = () => {
+
+  modal.classList.remove("open");
+
+};
+
+
+modal.addEventListener(
+  "click",
+  evento => {
+
+    if(evento.target === modal){
+
+      modal.classList.remove("open");
+
+    }
+
+  }
+);
+
+
+/* LOGIN */
+
+document
+.getElementById("loginBtn")
+.onclick = async () => {
+
+
+  const email =
+  document
+  .getElementById("email")
+  .value
+  .trim();
+
+
+  const senha =
+  document
+  .getElementById("password")
+  .value;
+
+
+  loginMsg.textContent = "";
+
+
+  try{
+
+
+    const credencial =
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      senha
+    );
+
+
+    if(
+      credencial.user.uid
+      !== ADMIN_UID
+    ){
+
+      await signOut(auth);
+
+      loginMsg.textContent =
+      "Este usuário não possui permissão de administrador.";
+
+      return;
+
+    }
+
+
+    modal.classList.remove("open");
+
 
     document
-    .getElementById("num-"+n)
-    .classList.remove("vendido");
+    .getElementById("password")
+    .value = "";
 
-    salvar();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    loginMsg.textContent =
+    "Não foi possível entrar. Confira o e-mail e a senha.";
+
+  }
+
+};
+
+
+/* VERIFICAR LOGIN */
+
+onAuthStateChanged(
+
+  auth,
+
+  usuario => {
+
+
+    isAdmin =
+    !!usuario &&
+    usuario.uid === ADMIN_UID;
+
+
+    adminPanel
+    .classList
+    .toggle(
+      "open",
+      isAdmin
+    );
+
+
+    adminEmail.textContent =
+    isAdmin
+    ? usuario.email
+    : "";
+
+
+    desenharGrid();
+
+  }
+
+);
+
+
+/* LOGOUT */
+
+document
+.getElementById("logoutBtn")
+.onclick = () => {
+
+  signOut(auth);
+
+};
+
+
+/* INTERPRETAR NÚMEROS */
+
+function parseNumbers(texto){
+
+  const resultado =
+  new Set();
+
+
+  for(
+    const itemBruto
+    of texto.split(",")
+  ){
+
+    const item =
+    itemBruto.trim();
+
+
+    if(!item)
+      continue;
+
+
+    /* INTERVALO */
+
+    if(item.includes("-")){
+
+
+      const [a,b] =
+      item
+      .split("-")
+      .map(
+        valor =>
+        parseInt(
+          valor.trim(),
+          10
+        )
+      );
+
+
+      if(
+        Number.isInteger(a) &&
+        Number.isInteger(b)
+      ){
+
+        const inicio =
+        Math.min(a,b);
+
+        const fim =
+        Math.max(a,b);
+
+
+        for(
+          let numero=inicio;
+          numero<=fim;
+          numero++
+        ){
+
+          if(
+            numero>=1 &&
+            numero<=TOTAL
+          ){
+
+            resultado.add(numero);
+
+          }
+
+        }
+
+      }
+
+    }
+
+
+    /* NÚMERO ÚNICO */
+
+    else{
+
+
+      const numero =
+      parseInt(item,10);
+
+
+      if(
+        Number.isInteger(numero) &&
+        numero>=1 &&
+        numero<=TOTAL
+      ){
+
+        resultado.add(numero);
+
+      }
+
+    }
+
+  }
+
+
+  return [...resultado];
 
 }
 
-atualizar();
+
+/* MARCAR VENDIDOS */
+
+document
+.getElementById("markSold")
+.onclick = async () => {
+
+
+  if(!isAdmin)
+    return;
+
+
+  const numeros =
+  parseNumbers(
+
+    document
+    .getElementById("adminNumbers")
+    .value
+
+  );
+
+
+  if(!numeros.length){
+
+    alert(
+      "Informe pelo menos um número válido."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+
+    await Promise.all(
+
+      numeros.map(
+
+        numero =>
+
+        set(
+
+          ref(
+            db,
+            `vendidos/${formatNumero(numero)}`
+          ),
+
+          true
+
+        )
+
+      )
+
+    );
+
+
+    document
+    .getElementById("adminNumbers")
+    .value = "";
+
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Erro ao gravar. Verifique as regras do Firebase."
+    );
+
+  }
+
+};
+
+
+/* LIBERAR NÚMEROS */
+
+document
+.getElementById("releaseNumbers")
+.onclick = async () => {
+
+
+  if(!isAdmin)
+    return;
+
+
+  const numeros =
+  parseNumbers(
+
+    document
+    .getElementById("adminNumbers")
+    .value
+
+  );
+
+
+  if(!numeros.length){
+
+    alert(
+      "Informe pelo menos um número válido."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+
+    await Promise.all(
+
+      numeros.map(
+
+        numero =>
+
+        remove(
+
+          ref(
+            db,
+            `vendidos/${formatNumero(numero)}`
+          )
+
+        )
+
+      )
+
+    );
+
+
+    document
+    .getElementById("adminNumbers")
+    .value = "";
+
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Erro ao liberar o número."
+    );
+
+  }
+
+};
 
 </script>
 
