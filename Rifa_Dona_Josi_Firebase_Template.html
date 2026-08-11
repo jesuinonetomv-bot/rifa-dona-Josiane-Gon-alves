@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rifa Solidária Dona Josi</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0}
+header{background:#d81b60;color:#fff;padding:20px;text-align:center}
+main{max-width:1200px;margin:auto;padding:20px}
+.card{background:#fff;padding:15px;border-radius:10px;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.num{padding:10px;text-align:center;border-radius:5px;font-weight:bold;cursor:pointer}
+.disponivel{background:#c8e6c9}
+.vendido{background:#ef9a9a}
+.btn{background:#25D366;color:white;padding:10px 15px;border-radius:6px;text-decoration:none}
+@media(max-width:700px){.grid{grid-template-columns:repeat(5,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<h1>🎗️ Rifa Solidária - Dona Josi</h1>
+<p>Bola Oficial da Copa do Mundo autografada por Dunga</p>
+</header>
+
+<main>
+<div class="card">
+<h2>Ajude a Dona Josi</h2>
+<p>Valor do número: <b>R$ 10,00</b></p>
+<p>PIX: <b>91 98315-1503</b></p>
+<a class="btn" href="https://wa.me/5591983151503">Reservar Número</a>
+</div>
+
+<div class="card">
+<h3>Disponíveis: <span id="disp">300</span> | Vendidos: <span id="vend">0</span></h3>
+<div class="grid" id="grid"></div>
+</div>
+</main>
+
+<script type="module">
+// CONFIGURAR FIREBASE AQUI
+// Substitua pelos dados do seu projeto Firebase.
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO",
+  storageBucket: "SEU_PROJETO.appspot.com",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
+};
+
+// Caso não configure o Firebase, o site funcionará apenas localmente.
+const grid=document.getElementById('grid');
+let vendidos=0;
+
+for(let i=1;i<=300;i++){
+ const d=document.createElement('div');
+ d.className='num disponivel';
+ d.textContent=String(i).padStart(3,'0');
+ d.onclick=()=>{
+   d.classList.toggle('vendido');
+   d.classList.toggle('disponivel');
+   vendidos=document.querySelectorAll('.vendido').length;
+   document.getElementById('vend').innerText=vendidos;
+   document.getElementById('disp').innerText=300-vendidos;
+ };
+ grid.appendChild(d);
+}
+</script>
+</body>
+</html>
