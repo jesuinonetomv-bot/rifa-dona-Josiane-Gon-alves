@@ -18,6 +18,7 @@
   --rosa2:#ec407a;
   --verde:#c8e6c9;
   --vermelho:#e53935;
+  --selecionado:#ffd54f;
   --cinza:#f4f5f7;
   --texto:#2d2d2d;
   --ouro:#ffca28;
@@ -145,10 +146,15 @@ header p{
   color:#fff;
 }
 
+.btn-whatsapp:disabled{
+  background:#a5d6a7;
+  cursor:not-allowed;
+  opacity:.7;
+}
+
 .btn-pix{
   background:var(--rosa);
   color:#fff;
-  margin-bottom:10px;
 }
 
 .btn-admin{
@@ -203,6 +209,27 @@ header p{
   transition:.35s;
 }
 
+/* SELEÇÃO */
+
+.selecao-box{
+  background:#fff8e1;
+  border:1px solid #ffe082;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:18px;
+  text-align:center;
+}
+
+.selecao-box strong{
+  color:var(--rosa);
+}
+
+.lista-selecionados{
+  margin:10px 0;
+  font-weight:bold;
+  line-height:1.5;
+}
+
 /* NÚMEROS */
 
 .legenda{
@@ -242,6 +269,12 @@ header p{
 .numero:hover{
   transform:translateY(-1px);
   filter:brightness(.97);
+}
+
+.numero.selecionado{
+  background:var(--selecionado);
+  color:#5d4300;
+  box-shadow:0 0 0 2px #f9a825 inset;
 }
 
 .numero.vendido{
@@ -394,7 +427,6 @@ capitão do Tetracampeonato Mundial de 1994.
 
 </header>
 
-
 <main class="container">
 
 <!-- PRÊMIO -->
@@ -427,7 +459,6 @@ R$ 10,00 por número
 </div>
 
 </section>
-
 
 <!-- PIX -->
 
@@ -470,19 +501,7 @@ Se preferir, copie o código abaixo e cole no aplicativo do seu banco:
 ✅ Código PIX copiado!
 </div>
 
-<br>
-
-<a
-  class="btn btn-whatsapp"
-  href="https://wa.me/5591983151503"
-  target="_blank"
-  rel="noopener"
->
-📲 Enviar comprovante pelo WhatsApp
-</a>
-
 </section>
-
 
 <!-- PROGRESSO -->
 
@@ -520,15 +539,14 @@ Preenchida
 
 </section>
 
-
 <!-- NÚMEROS -->
 
 <section class="card">
 
-<h2>🎟️ Escolha seu número</h2>
+<h2>🎟️ Escolha seus números</h2>
 
 <p>
-Clique em um número verde para solicitar a reserva pelo WhatsApp.
+Clique em um ou mais números verdes. Os números selecionados ficarão amarelos.
 </p>
 
 <div class="legenda">
@@ -539,9 +557,41 @@ Disponível
 </span>
 
 <span>
+<span class="dot" style="background:#ffd54f"></span>
+Selecionado
+</span>
+
+<span>
 <span class="dot" style="background:#e53935"></span>
 Vendido
 </span>
+
+</div>
+
+<div class="selecao-box">
+
+<div>
+Números selecionados:
+<strong id="qtdSelecionados">0</strong>
+</div>
+
+<div class="lista-selecionados" id="listaSelecionados">
+Nenhum número selecionado
+</div>
+
+<div>
+Total:
+<strong id="valorSelecionados">R$ 0,00</strong>
+</div>
+
+<br>
+
+<button
+  id="pedirWhatsApp"
+  class="btn btn-whatsapp"
+  disabled>
+📲 PEDIR NÚMEROS PELO WHATSAPP
+</button>
 
 </div>
 
@@ -557,7 +607,6 @@ Conectando ao Firebase...
 </div>
 
 </section>
-
 
 <!-- PAINEL ADMIN -->
 
@@ -622,7 +671,6 @@ Sair do painel
 
 </main>
 
-
 <footer>
 
 ❤️ Todo o valor arrecadado será destinado à Josiene Amaral.
@@ -633,16 +681,12 @@ Juntos podemos fazer a diferença.
 
 </footer>
 
-
-<!-- BOTÃO ADMIN -->
-
 <button
   id="adminFab"
   class="fab"
   title="Administrador">
 ⚙️
 </button>
-
 
 <!-- LOGIN -->
 
@@ -694,7 +738,6 @@ Cancelar
 </div>
 </div>
 
-
 <script type="module">
 
 import {
@@ -715,7 +758,6 @@ import {
   set,
   remove
 } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-
 
 /* FIREBASE */
 
@@ -747,17 +789,12 @@ const firebaseConfig = {
 
 };
 
-
-/* ADMIN */
-
 const ADMIN_UID =
 "lioq8PxzEsQ4uKHC6YLAXmHXEK93";
-
 
 const TOTAL = 300;
 
 const VALOR = 10;
-
 
 const app =
 initializeApp(firebaseConfig);
@@ -767,7 +804,6 @@ getAuth(app);
 
 const db =
 getDatabase(app);
-
 
 /* ELEMENTOS */
 
@@ -804,15 +840,28 @@ document.getElementById("loginModal");
 const loginMsg =
 document.getElementById("loginMsg");
 
+const qtdSelecionados =
+document.getElementById("qtdSelecionados");
+
+const listaSelecionados =
+document.getElementById("listaSelecionados");
+
+const valorSelecionados =
+document.getElementById("valorSelecionados");
+
+const pedirWhatsApp =
+document.getElementById("pedirWhatsApp");
 
 let vendidos =
+new Set();
+
+let selecionados =
 new Set();
 
 let isAdmin =
 false;
 
-
-/* PIX COPIA E COLA */
+/* PIX */
 
 document
 .getElementById("copiarPix")
@@ -831,23 +880,6 @@ document
       await navigator
       .clipboard
       .writeText(codigo);
-
-      const aviso =
-      document
-      .getElementById("pixCopiado");
-
-      aviso.style.display =
-      "block";
-
-      setTimeout(
-        () => {
-
-          aviso.style.display =
-          "none";
-
-        },
-        3000
-      );
 
     }
 
@@ -868,28 +900,24 @@ document
 
       textarea.remove();
 
-      const aviso =
-      document
-      .getElementById("pixCopiado");
-
-      aviso.style.display =
-      "block";
-
-      setTimeout(
-        () => {
-
-          aviso.style.display =
-          "none";
-
-        },
-        3000
-      );
-
     }
+
+    const aviso =
+    document
+    .getElementById("pixCopiado");
+
+    aviso.style.display =
+    "block";
+
+    setTimeout(
+      () => {
+        aviso.style.display = "none";
+      },
+      3000
+    );
 
   }
 );
-
 
 /* FORMATAR */
 
@@ -899,6 +927,97 @@ function formatNumero(n){
 
 }
 
+/* ATUALIZAR SELEÇÃO */
+
+function atualizarSelecao(){
+
+  const lista =
+  [...selecionados].sort(
+    (a,b) => a-b
+  );
+
+  qtdSelecionados.textContent =
+  lista.length;
+
+  valorSelecionados.textContent =
+  (lista.length * VALOR)
+  .toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+  if(lista.length === 0){
+
+    listaSelecionados.textContent =
+    "Nenhum número selecionado";
+
+    pedirWhatsApp.disabled =
+    true;
+
+  }
+
+  else{
+
+    listaSelecionados.textContent =
+    lista
+    .map(formatNumero)
+    .join(", ");
+
+    pedirWhatsApp.disabled =
+    false;
+
+  }
+
+}
+
+/* WHATSAPP */
+
+pedirWhatsApp.addEventListener(
+  "click",
+  () => {
+
+    const lista =
+    [...selecionados]
+    .sort(
+      (a,b) => a-b
+    );
+
+    if(lista.length === 0)
+      return;
+
+    const numeros =
+    lista
+    .map(formatNumero)
+    .join(", ");
+
+    const total =
+    (lista.length * VALOR)
+    .toLocaleString(
+      "pt-BR",
+      {
+        style:"currency",
+        currency:"BRL"
+      }
+    );
+
+    const mensagem =
+`Olá! Gostaria de reservar os números ${numeros} da Rifa Solidária da Josiene Amaral.
+
+Quantidade: ${lista.length}
+Total: ${total}
+
+Vou realizar o PIX e enviar o comprovante.`;
+
+    window.open(
+      `https://wa.me/5591983151503?text=${encodeURIComponent(mensagem)}`,
+      "_blank"
+    );
+
+  }
+);
 
 /* GRID */
 
@@ -911,19 +1030,27 @@ function desenharGrid(){
     const botao =
     document.createElement("button");
 
+    let classes =
+    "numero";
+
+    if(vendidos.has(i))
+      classes += " vendido";
+
+    else if(selecionados.has(i))
+      classes += " selecionado";
+
+    if(isAdmin)
+      classes += " admin-mode";
+
     botao.className =
-    "numero" +
-    (vendidos.has(i) ? " vendido" : "") +
-    (isAdmin ? " admin-mode" : "");
+    classes;
 
     botao.textContent =
     formatNumero(i);
 
-
     botao.addEventListener(
       "click",
       async () => {
-
 
         /* ADMIN */
 
@@ -970,7 +1097,6 @@ function desenharGrid(){
 
         }
 
-
         /* VISITANTE */
 
         if(vendidos.has(i)){
@@ -983,29 +1109,30 @@ function desenharGrid(){
 
         }
 
+        if(selecionados.has(i)){
 
-        const mensagem =
-        `Olá! Gostaria de reservar o número ${formatNumero(i)} da Rifa Solidária da Josiene Amaral.`;
+          selecionados.delete(i);
 
+        }
 
-        window.open(
+        else{
 
-          `https://wa.me/5591983151503?text=${encodeURIComponent(mensagem)}`,
+          selecionados.add(i);
 
-          "_blank"
+        }
 
-        );
+        atualizarSelecao();
+
+        desenharGrid();
 
       }
     );
-
 
     grid.appendChild(botao);
 
   }
 
 }
-
 
 /* CONTADORES */
 
@@ -1014,14 +1141,11 @@ function atualizarResumo(){
   const quantidade =
   vendidos.size;
 
-
   vendidosEl.textContent =
   quantidade;
 
-
   disponiveisEl.textContent =
   TOTAL - quantidade;
-
 
   arrecadadoEl.textContent =
   (quantidade * VALOR)
@@ -1033,10 +1157,8 @@ function atualizarResumo(){
     }
   );
 
-
   const percentual =
   (quantidade / TOTAL) * 100;
-
 
   percentualEl.textContent =
   percentual
@@ -1044,14 +1166,12 @@ function atualizarResumo(){
   .replace(".",",")
   + "%";
 
-
   progressBar.style.width =
   percentual + "%";
 
 }
 
-
-/* SINCRONIZAÇÃO */
+/* FIREBASE */
 
 onValue(
 
@@ -1061,7 +1181,6 @@ onValue(
 
     const dados =
     snapshot.val() || {};
-
 
     vendidos =
     new Set(
@@ -1087,17 +1206,28 @@ onValue(
 
     );
 
+    /* remove da seleção números que acabaram de ser vendidos */
+
+    for(const numero of selecionados){
+
+      if(vendidos.has(numero)){
+
+        selecionados.delete(numero);
+
+      }
+
+    }
 
     atualizarResumo();
 
-    desenharGrid();
+    atualizarSelecao();
 
+    desenharGrid();
 
     syncStatus.textContent =
     "✅ Números sincronizados em tempo real.";
 
   },
-
 
   error => {
 
@@ -1110,8 +1240,7 @@ onValue(
 
 );
 
-
-/* BOTÃO ADMIN */
+/* ADMIN */
 
 document
 .getElementById("adminFab")
@@ -1133,9 +1262,6 @@ document
 
 };
 
-
-/* FECHAR LOGIN */
-
 document
 .getElementById("closeModal")
 .onclick = () => {
@@ -1143,7 +1269,6 @@ document
   modal.classList.remove("open");
 
 };
-
 
 modal.addEventListener(
   "click",
@@ -1158,13 +1283,11 @@ modal.addEventListener(
   }
 );
 
-
 /* LOGIN */
 
 document
 .getElementById("loginBtn")
 .onclick = async () => {
-
 
   const email =
   document
@@ -1172,18 +1295,14 @@ document
   .value
   .trim();
 
-
   const senha =
   document
   .getElementById("password")
   .value;
 
-
   loginMsg.textContent = "";
 
-
   try{
-
 
     const credencial =
     await signInWithEmailAndPassword(
@@ -1191,7 +1310,6 @@ document
       email,
       senha
     );
-
 
     if(
       credencial.user.uid
@@ -1207,14 +1325,11 @@ document
 
     }
 
-
     modal.classList.remove("open");
-
 
     document
     .getElementById("password")
     .value = "";
-
 
   }
 
@@ -1229,20 +1344,15 @@ document
 
 };
 
-
-/* VERIFICAR LOGIN */
-
 onAuthStateChanged(
 
   auth,
 
   usuario => {
 
-
     isAdmin =
     !!usuario &&
     usuario.uid === ADMIN_UID;
-
 
     adminPanel
     .classList
@@ -1251,21 +1361,16 @@ onAuthStateChanged(
       isAdmin
     );
 
-
     adminEmail.textContent =
     isAdmin
     ? usuario.email
     : "";
-
 
     desenharGrid();
 
   }
 
 );
-
-
-/* LOGOUT */
 
 document
 .getElementById("logoutBtn")
@@ -1275,14 +1380,12 @@ document
 
 };
 
-
-/* INTERPRETAR NÚMEROS */
+/* INTERPRETAR ADMIN */
 
 function parseNumbers(texto){
 
   const resultado =
   new Set();
-
 
   for(
     const itemBruto
@@ -1292,13 +1395,10 @@ function parseNumbers(texto){
     const item =
     itemBruto.trim();
 
-
     if(!item)
       continue;
 
-
     if(item.includes("-")){
-
 
       const [a,b] =
       item
@@ -1311,7 +1411,6 @@ function parseNumbers(texto){
         )
       );
 
-
       if(
         Number.isInteger(a) &&
         Number.isInteger(b)
@@ -1322,7 +1421,6 @@ function parseNumbers(texto){
 
         const fim =
         Math.max(a,b);
-
 
         for(
           let numero=inicio;
@@ -1345,13 +1443,10 @@ function parseNumbers(texto){
 
     }
 
-
     else{
-
 
       const numero =
       parseInt(item,10);
-
 
       if(
         Number.isInteger(numero) &&
@@ -1367,11 +1462,9 @@ function parseNumbers(texto){
 
   }
 
-
   return [...resultado];
 
 }
-
 
 /* MARCAR VENDIDOS */
 
@@ -1379,10 +1472,8 @@ document
 .getElementById("markSold")
 .onclick = async () => {
 
-
   if(!isAdmin)
     return;
-
 
   const numeros =
   parseNumbers(
@@ -1392,7 +1483,6 @@ document
     .value
 
   );
-
 
   if(!numeros.length){
 
@@ -1404,9 +1494,7 @@ document
 
   }
 
-
   try{
-
 
     await Promise.all(
 
@@ -1429,11 +1517,9 @@ document
 
     );
 
-
     document
     .getElementById("adminNumbers")
     .value = "";
-
 
   }
 
@@ -1449,17 +1535,14 @@ document
 
 };
 
-
 /* LIBERAR */
 
 document
 .getElementById("releaseNumbers")
 .onclick = async () => {
 
-
   if(!isAdmin)
     return;
-
 
   const numeros =
   parseNumbers(
@@ -1469,7 +1552,6 @@ document
     .value
 
   );
-
 
   if(!numeros.length){
 
@@ -1481,9 +1563,7 @@ document
 
   }
 
-
   try{
-
 
     await Promise.all(
 
@@ -1504,11 +1584,9 @@ document
 
     );
 
-
     document
     .getElementById("adminNumbers")
     .value = "";
-
 
   }
 
