@@ -7,6 +7,7 @@
 <title>Rifa Solidária - Josiene Amaral</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -15,7 +16,7 @@
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#f7f7f7;
+    background:#f5f5f5;
     color:#333;
 }
 
@@ -27,13 +28,7 @@ header{
 }
 
 header h1{
-    font-size:2rem;
     margin-bottom:10px;
-}
-
-header p{
-    font-size:1.1rem;
-    line-height:1.5;
 }
 
 .container{
@@ -44,17 +39,17 @@ header p{
 
 .card{
     background:white;
-    border-radius:15px;
     padding:20px;
+    border-radius:15px;
     margin-bottom:20px;
     box-shadow:0 3px 10px rgba(0,0,0,.1);
 }
 
-.foto-premio{
+.foto{
     text-align:center;
 }
 
-.foto-premio img{
+.foto img{
     width:95%;
     max-width:700px;
     border-radius:20px;
@@ -63,10 +58,10 @@ header p{
 
 .destaque{
     text-align:center;
+    margin-top:15px;
+    color:#d81b60;
     font-size:22px;
     font-weight:bold;
-    color:#d81b60;
-    margin-top:15px;
 }
 
 .pix{
@@ -74,63 +69,72 @@ header p{
 }
 
 .pix h2{
-    margin-bottom:10px;
     color:#d81b60;
-}
-
-.pix p{
-    margin:8px 0;
-    font-size:18px;
+    margin-bottom:10px;
 }
 
 .qrcode{
-    width:100%;
     max-width:300px;
-    margin:20px auto;
+    width:100%;
     display:block;
-    border-radius:10px;
+    margin:20px auto;
 }
 
 .btn{
     display:inline-block;
     background:#25D366;
     color:white;
+    text-decoration:none;
     padding:12px 20px;
     border-radius:8px;
-    text-decoration:none;
     font-weight:bold;
-    margin-top:10px;
-}
-
-.btn:hover{
-    opacity:.9;
 }
 
 .contador{
     text-align:center;
     font-size:20px;
-    font-weight:bold;
     margin-bottom:20px;
+    font-weight:bold;
 }
 
 .grid{
     display:grid;
     grid-template-columns:repeat(10,1fr);
-    gap:5px;
+    gap:6px;
 }
 
 .numero{
+    background:#c8e6c9;
     padding:12px;
-    text-align:center;
     border-radius:8px;
+    text-align:center;
     font-weight:bold;
     cursor:pointer;
-    background:#c8e6c9;
     transition:.2s;
 }
 
 .numero:hover{
     transform:scale(1.05);
+}
+
+.vendido{
+    background:#e53935 !important;
+    color:white;
+}
+
+.barra-fundo{
+    width:100%;
+    height:30px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.barra{
+    height:100%;
+    width:0%;
+    background:#4caf50;
+    transition:.5s;
 }
 
 footer{
@@ -139,17 +143,51 @@ footer{
     color:#777;
 }
 
+#adminPanel{
+    display:none;
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+    z-index:999;
+}
+
+#adminPanel input{
+    width:100px;
+    padding:8px;
+    margin-bottom:10px;
+}
+
+#adminPanel button{
+    padding:8px;
+    margin:3px;
+}
+
+.admin-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#d81b60;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
 @media(max-width:700px){
 
     .grid{
         grid-template-columns:repeat(5,1fr);
     }
 
-    header h1{
-        font-size:1.5rem;
-    }
-
 }
+
 </style>
 </head>
 
@@ -163,15 +201,14 @@ footer{
 Ajude na luta contra o câncer e concorra a uma
 <strong>Bola Oficial da Copa do Mundo</strong>,
 autografada por
-<strong>Dunga</strong>,
-capitão do Tetracampeonato Mundial de 1994.
+<strong>Dunga</strong>.
 </p>
 
 </header>
 
 <div class="container">
 
-<div class="card foto-premio">
+<div class="card foto">
 
 <img src="bola.jpg" alt="Bola autografada por Dunga">
 
@@ -184,16 +221,18 @@ capitão do Tetracampeonato Mundial de 1994.
 
 <div class="card pix">
 
-<h2>💖 Toda ajuda faz diferença</h2>
+<h2>💖 Faça a diferença</h2>
 
-<p><strong>Valor do número:</strong> R$ 10,00</p>
+<p><strong>Valor:</strong> R$ 10,00 por número</p>
 
 <p>
 <strong>PIX:</strong><br>
 91 98315-1503
 </p>
 
-<img src="qrcode_pix.png" class="qrcode" alt="QR Code PIX">
+<img src="qrcode_pix.png" class="qrcode">
+
+<br>
 
 <a
 class="btn"
@@ -206,12 +245,35 @@ Enviar Comprovante
 
 <div class="card">
 
+<h2>📊 Arrecadação</h2>
+
+<p>
+Total arrecadado:
+<strong id="arrecadado">
+R$ 0,00
+</strong>
+</p>
+
+<br>
+
+<div class="barra-fundo">
+<div id="barra" class="barra"></div>
+</div>
+
+</div>
+
+<div class="card">
+
 <div class="contador">
-Disponíveis:
-<span id="disp">300</span>
-|
+
 Vendidos:
 <span id="vend">0</span>
+
+|
+
+Disponíveis:
+<span id="disp">300</span>
+
 </div>
 
 <div class="grid" id="grid"></div>
@@ -222,30 +284,113 @@ Vendidos:
 
 <footer>
 
-❤️ Todo o valor arrecadado será destinado à
-Josiene Amaral em sua luta contra o câncer.
+❤️ Todo valor arrecadado será destinado ao tratamento de Josiene Amaral.
 
 </footer>
 
+<div id="adminPanel">
+
+<h3>Painel Admin</h3>
+
+<input
+type="number"
+id="numeroAdmin"
+placeholder="Número">
+
+<br>
+
+<button onclick="marcarVendido()">
+Vender
+</button>
+
+<button onclick="liberarNumero()">
+Liberar
+</button>
+
+</div>
+
+<button
+class="admin-btn"
+onclick="loginAdmin()">
+⚙️
+</button>
+
 <script>
 
-const grid = document.getElementById("grid");
+const SENHA_ADMIN = "Josi2026";
+
+let vendidos =
+JSON.parse(
+localStorage.getItem("rifaVendidos") || "[]"
+);
+
+const grid =
+document.getElementById("grid");
+
+function salvar(){
+
+    localStorage.setItem(
+        "rifaVendidos",
+        JSON.stringify(vendidos)
+    );
+
+    atualizar();
+}
+
+function atualizar(){
+
+    document.getElementById("vend")
+    .innerText = vendidos.length;
+
+    document.getElementById("disp")
+    .innerText = 300 - vendidos.length;
+
+    const valor =
+    vendidos.length * 10;
+
+    document.getElementById("arrecadado")
+    .innerText =
+    valor.toLocaleString(
+        'pt-BR',
+        {
+            style:'currency',
+            currency:'BRL'
+        }
+    );
+
+    document.getElementById("barra")
+    .style.width =
+    ((vendidos.length/300)*100)+"%";
+
+}
 
 for(let i=1;i<=300;i++){
 
-    const numero = document.createElement("div");
+    const numero =
+    document.createElement("div");
 
-    numero.className = "numero";
+    numero.id = "num-"+i;
 
-    numero.textContent = String(i).padStart(3,"0");
+    numero.className =
+    vendidos.includes(i)
+    ? "numero vendido"
+    : "numero";
+
+    numero.textContent =
+    String(i).padStart(3,"0");
 
     numero.onclick = () => {
 
-        const mensagem =
+        if(vendidos.includes(i)){
+            alert("Número já vendido.");
+            return;
+        }
+
+        const msg =
         `Olá! Gostaria de reservar o número ${String(i).padStart(3,'0')} da Rifa Solidária da Josiene Amaral.`;
 
         window.open(
-        `https://wa.me/5591983151503?text=${encodeURIComponent(mensagem)}`,
+        `https://wa.me/5591983151503?text=${encodeURIComponent(msg)}`,
         "_blank"
         );
 
@@ -254,6 +399,67 @@ for(let i=1;i<=300;i++){
     grid.appendChild(numero);
 
 }
+
+function loginAdmin(){
+
+    const senha =
+    prompt("Digite a senha:");
+
+    if(senha === SENHA_ADMIN){
+
+        document.getElementById("adminPanel")
+        .style.display = "block";
+
+    }else{
+
+        alert("Senha incorreta");
+
+    }
+
+}
+
+function marcarVendido(){
+
+    const n =
+    parseInt(
+    document.getElementById("numeroAdmin").value
+    );
+
+    if(!n || n<1 || n>300) return;
+
+    if(!vendidos.includes(n)){
+
+        vendidos.push(n);
+
+        document
+        .getElementById("num-"+n)
+        .classList.add("vendido");
+
+        salvar();
+
+    }
+
+}
+
+function liberarNumero(){
+
+    const n =
+    parseInt(
+    document.getElementById("numeroAdmin").value
+    );
+
+    vendidos =
+    vendidos.filter(x => x !== n);
+
+    document
+    .getElementById("num-"+n)
+    .classList.remove("vendido");
+
+    salvar();
+
+}
+
+atualizar();
 
 </script>
 
