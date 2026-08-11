@@ -2,79 +2,260 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rifa Solidária Dona Josi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rifa Solidária - Josiene Amaral</title>
+
 <style>
-body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0}
-header{background:#d81b60;color:#fff;padding:20px;text-align:center}
-main{max-width:1200px;margin:auto;padding:20px}
-.card{background:#fff;padding:15px;border-radius:10px;margin-bottom:15px}
-.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
-.num{padding:10px;text-align:center;border-radius:5px;font-weight:bold;cursor:pointer}
-.disponivel{background:#c8e6c9}
-.vendido{background:#ef9a9a}
-.btn{background:#25D366;color:white;padding:10px 15px;border-radius:6px;text-decoration:none}
-@media(max-width:700px){.grid{grid-template-columns:repeat(5,1fr)}}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7f7f7;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#d81b60,#ec407a);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+header h1{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.1rem;
+    line-height:1.5;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.foto-premio{
+    text-align:center;
+}
+
+.foto-premio img{
+    width:95%;
+    max-width:700px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.destaque{
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    color:#d81b60;
+    margin-top:15px;
+}
+
+.pix{
+    text-align:center;
+}
+
+.pix h2{
+    margin-bottom:10px;
+    color:#d81b60;
+}
+
+.pix p{
+    margin:8px 0;
+    font-size:18px;
+}
+
+.qrcode{
+    width:100%;
+    max-width:300px;
+    margin:20px auto;
+    display:block;
+    border-radius:10px;
+}
+
+.btn{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+.contador{
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:5px;
+}
+
+.numero{
+    padding:12px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    background:#c8e6c9;
+    transition:.2s;
+}
+
+.numero:hover{
+    transform:scale(1.05);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+}
+
+@media(max-width:700px){
+
+    .grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    header h1{
+        font-size:1.5rem;
+    }
+
+}
 </style>
 </head>
+
 <body>
-  <div style="text-align:center;padding:20px;">
-    <img src="bola.jpg"
-         alt="Bola autografada por Dunga"
-         style="max-width:400px;width:90%;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,.3);">
-</div>
+
 <header>
+
 <h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL</h1>
+
 <p>
-Concorra a uma <strong>Bola Oficial da Copa do Mundo</strong>,
-autografada por <strong>Dunga</strong>, capitão do Tetracampeonato Mundial de 1994.
+Ajude na luta contra o câncer e concorra a uma
+<strong>Bola Oficial da Copa do Mundo</strong>,
+autografada por
+<strong>Dunga</strong>,
+capitão do Tetracampeonato Mundial de 1994.
 </p>
-<p>Bola Oficial da Copa do Mundo autografada por Dunga</p>
+
 </header>
 
-<main>
-<div class="card">
-<h2>Ajude a Dona Josi</h2>
-<p>Valor do número: <b>R$ 10,00</b></p>
-<p>PIX: <b>91 98315-1503</b></p>
-<a class="btn" href="https://wa.me/5591983151503">Reservar Número</a>
+<div class="container">
+
+<div class="card foto-premio">
+
+<img src="bola.jpg" alt="Bola autografada por Dunga">
+
+<div class="destaque">
+⚽ Bola Oficial da Copa do Mundo<br>
+✍️ Autografada por Dunga
+</div>
+
+</div>
+
+<div class="card pix">
+
+<h2>💖 Toda ajuda faz diferença</h2>
+
+<p><strong>Valor do número:</strong> R$ 10,00</p>
+
+<p>
+<strong>PIX:</strong><br>
+91 98315-1503
+</p>
+
+<img src="qrcode_pix.png" class="qrcode" alt="QR Code PIX">
+
+<a
+class="btn"
+href="https://wa.me/5591983151503"
+target="_blank">
+Enviar Comprovante
+</a>
+
 </div>
 
 <div class="card">
-<h3>Disponíveis: <span id="disp">300</span> | Vendidos: <span id="vend">0</span></h3>
+
+<div class="contador">
+Disponíveis:
+<span id="disp">300</span>
+|
+Vendidos:
+<span id="vend">0</span>
+</div>
+
 <div class="grid" id="grid"></div>
+
 </div>
-</main>
 
-<script type="module">
-// CONFIGURAR FIREBASE AQUI
-// Substitua pelos dados do seu projeto Firebase.
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJETO",
-  storageBucket: "SEU_PROJETO.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
-};
+</div>
 
-// Caso não configure o Firebase, o site funcionará apenas localmente.
-const grid=document.getElementById('grid');
-let vendidos=0;
+<footer>
+
+❤️ Todo o valor arrecadado será destinado à
+Josiene Amaral em sua luta contra o câncer.
+
+</footer>
+
+<script>
+
+const grid = document.getElementById("grid");
 
 for(let i=1;i<=300;i++){
- const d=document.createElement('div');
- d.className='num disponivel';
- d.textContent=String(i).padStart(3,'0');
- d.onclick=()=>{
-   d.classList.toggle('vendido');
-   d.classList.toggle('disponivel');
-   vendidos=document.querySelectorAll('.vendido').length;
-   document.getElementById('vend').innerText=vendidos;
-   document.getElementById('disp').innerText=300-vendidos;
- };
- grid.appendChild(d);
+
+    const numero = document.createElement("div");
+
+    numero.className = "numero";
+
+    numero.textContent = String(i).padStart(3,"0");
+
+    numero.onclick = () => {
+
+        const mensagem =
+        `Olá! Gostaria de reservar o número ${String(i).padStart(3,'0')} da Rifa Solidária da Josiene Amaral.`;
+
+        window.open(
+        `https://wa.me/5591983151503?text=${encodeURIComponent(mensagem)}`,
+        "_blank"
+        );
+
+    };
+
+    grid.appendChild(numero);
+
 }
+
 </script>
+
 </body>
 </html>
