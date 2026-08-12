@@ -3,321 +3,3418 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Rifa Solidária - Josiene Amaral</title>
+
 <style>
-:root{--rosa:#d81b60;--rosa2:#ec407a;--verde:#c8e6c9;--amarelo:#ffd54f;--laranja:#ffb74d;--vermelho:#e53935;--bg:#f4f5f7}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#2d2d2d}
-header{background:linear-gradient(135deg,var(--rosa),var(--rosa2));color:#fff;text-align:center;padding:30px 18px}
-header h1{margin:0 0 10px}.container{max-width:1150px;margin:auto;padding:18px}
-.card{background:#fff;border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 4px 18px #00000014}
-.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:center}.hero img{width:100%;max-height:480px;object-fit:contain;border-radius:16px}
-.preco{font-size:2rem;font-weight:800;color:var(--rosa)}.center{text-align:center}
-.instagram{display:inline-block;padding:13px 22px;background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);color:#fff;text-decoration:none;border-radius:10px;font-weight:bold}
-.qrcode{width:240px;max-width:80%;display:block;margin:16px auto;border-radius:12px}
-.pixcode{max-width:700px;margin:15px auto;padding:15px;background:#f7f7f7;border:1px solid #ddd;border-radius:10px;word-break:break-all;text-align:left;font-size:13px}
-.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer;font-size:1rem}.btn:disabled{opacity:.5;cursor:not-allowed}
-.btn-whats{background:#25D366;color:#fff}.btn-pix{background:var(--rosa);color:#fff}.btn-dark{background:#222;color:#fff}
-.btn-ok{background:#2e7d32;color:#fff}.btn-danger{background:#c62828;color:#fff}.btn-warn{background:#ef6c00;color:#fff}.btn-light{background:#eceff1;color:#222}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#fafafa;border:1px solid #eee;border-radius:14px;text-align:center;padding:14px}.stat strong{font-size:1.4rem;display:block;color:var(--rosa)}
-.progress{height:24px;background:#ddd;border-radius:99px;overflow:hidden;margin-top:15px}.progress div{height:100%;width:0;background:linear-gradient(90deg,#43a047,#7cb342)}
-.legend{display:flex;gap:16px;flex-wrap:wrap;margin:13px 0}.dot{width:14px;height:14px;display:inline-block;border-radius:4px;margin-right:5px}
-.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}.numero{border:0;padding:11px 4px;border-radius:8px;font-weight:800;cursor:pointer;background:var(--verde)}
-.numero.sel{background:var(--amarelo);box-shadow:0 0 0 2px #f9a825 inset}.numero.res{background:var(--laranja);cursor:not-allowed}.numero.vend{background:var(--vermelho);color:#fff;cursor:not-allowed}
-.box{background:#fff8e1;border:1px solid #ffe082;border-radius:14px;padding:16px;margin-bottom:18px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field{width:100%;padding:12px;border:1px solid #ccc;border-radius:9px;margin:6px 0 10px;font-size:1rem}.resinfo{display:none;background:#fff3e0;border:2px solid #ff9800}.resinfo.on,.admin.on{display:block}
-.admin{display:none}.item{border:1px solid #ddd;border-left:6px solid #ff9800;border-radius:12px;padding:15px;margin:12px 0}.pago{border-left-color:#2e7d32}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;border:0;background:var(--rosa);color:#fff;font-size:24px;box-shadow:0 6px 18px #0004;cursor:pointer}
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:1000;padding:18px;align-items:center;justify-content:center}.modal.on{display:flex}.modalbox{width:min(520px,100%);background:#fff;border-radius:18px;padding:22px}
-.status{text-align:center;color:#666;margin-top:10px}footer{text-align:center;color:#666;padding:28px 15px 80px}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(5,1fr)}.formgrid{grid-template-columns:1fr}}
+:root{
+  --rosa:#d81b60;
+  --rosa2:#ec407a;
+  --verde:#c8e6c9;
+  --amarelo:#ffd54f;
+  --laranja:#ffb74d;
+  --vermelho:#e53935;
+  --bg:#f4f5f7;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:#2d2d2d;
+}
+
+header{
+  background:linear-gradient(135deg,var(--rosa),var(--rosa2));
+  color:#fff;
+  text-align:center;
+  padding:30px 18px;
+}
+
+header h1{
+  margin:0 0 10px;
+}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 4px 18px #00000014;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:22px;
+  align-items:center;
+}
+
+.hero img{
+  width:100%;
+  max-height:480px;
+  object-fit:contain;
+  border-radius:16px;
+}
+
+.preco{
+  font-size:2rem;
+  font-weight:800;
+  color:var(--rosa);
+}
+
+.center{
+  text-align:center;
+}
+
+.instagram{
+  display:inline-block;
+  padding:13px 22px;
+  background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.qrcode{
+  width:240px;
+  max-width:80%;
+  display:block;
+  margin:16px auto;
+  border-radius:12px;
+}
+
+.pixcode{
+  max-width:700px;
+  margin:15px auto;
+  padding:15px;
+  background:#f7f7f7;
+  border:1px solid #ddd;
+  border-radius:10px;
+  word-break:break-all;
+  text-align:left;
+  font-size:13px;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+.btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.btn-whats{
+  background:#25D366;
+  color:#fff;
+}
+
+.btn-pix{
+  background:var(--rosa);
+  color:#fff;
+}
+
+.btn-dark{
+  background:#222;
+  color:#fff;
+}
+
+.btn-ok{
+  background:#2e7d32;
+  color:#fff;
+}
+
+.btn-danger{
+  background:#c62828;
+  color:#fff;
+}
+
+.btn-warn{
+  background:#ef6c00;
+  color:#fff;
+}
+
+.btn-light{
+  background:#eceff1;
+  color:#222;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.stat{
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:14px;
+  text-align:center;
+  padding:14px;
+}
+
+.stat strong{
+  font-size:1.4rem;
+  display:block;
+  color:var(--rosa);
+}
+
+.progress{
+  height:24px;
+  background:#ddd;
+  border-radius:99px;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.progress div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#43a047,#7cb342);
+}
+
+.legend{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin:13px 0;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  display:inline-block;
+  border-radius:4px;
+  margin-right:5px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:6px;
+}
+
+.numero{
+  border:0;
+  padding:11px 4px;
+  border-radius:8px;
+  font-weight:800;
+  cursor:pointer;
+  background:var(--verde);
+}
+
+.numero.sel{
+  background:var(--amarelo);
+  box-shadow:0 0 0 2px #f9a825 inset;
+}
+
+.numero.res{
+  background:var(--laranja);
+  cursor:not-allowed;
+}
+
+.numero.vend{
+  background:var(--vermelho);
+  color:#fff;
+  cursor:not-allowed;
+}
+
+.box{
+  background:#fff8e1;
+  border:1px solid #ffe082;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:18px;
+}
+
+.formgrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.field{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  margin:6px 0 10px;
+  font-size:1rem;
+}
+
+.resinfo{
+  display:none;
+  background:#fff3e0;
+  border:2px solid #ff9800;
+}
+
+.resinfo.on,
+.admin.on{
+  display:block;
+}
+
+.admin{
+  display:none;
+}
+
+.item{
+  border:1px solid #ddd;
+  border-left:6px solid #ff9800;
+  border-radius:12px;
+  padding:15px;
+  margin:12px 0;
+}
+
+.pago{
+  border-left-color:#2e7d32;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.fab{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:0;
+  background:var(--rosa);
+  color:#fff;
+  font-size:24px;
+  box-shadow:0 6px 18px #0004;
+  cursor:pointer;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:1000;
+  padding:18px;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal.on{
+  display:flex;
+}
+
+.modalbox{
+  width:min(520px,100%);
+  background:#fff;
+  border-radius:18px;
+  padding:22px;
+}
+
+.status{
+  text-align:center;
+  color:#666;
+  margin-top:10px;
+}
+
+footer{
+  text-align:center;
+  color:#666;
+  padding:28px 15px 80px;
+}
+
+@media(max-width:760px){
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .formgrid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
 <h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL</h1>
-<p>Ajude na luta contra o câncer e concorra a uma <strong>Bola Oficial da Copa do Mundo</strong>, autografada por <strong>Dunga</strong>, capitão do Tetra de 1994.</p>
+
+<p>
+Ajude na luta contra o câncer e concorra a uma
+<strong>Bola Oficial da Copa do Mundo</strong>,
+autografada por <strong>Dunga</strong>,
+capitão do Tetra de 1994.
+</p>
 </header>
 
+
 <main class="container">
+
+<!-- PRÊMIO -->
+
 <section class="card hero">
-<img src="bola.jpg" alt="Bola autografada por Dunga">
-<div><h2>🏆 Prêmio especial</h2><p>Bola Oficial da Copa do Mundo autografada por Dunga.</p><p>Todo o valor arrecadado será destinado à <strong>Josiene Amaral</strong>.</p><div class="preco">R$ 10,00 por número</div></div>
+
+<img
+src="bola.jpg"
+alt="Bola autografada por Dunga">
+
+<div>
+
+<h2>🏆 Prêmio especial</h2>
+
+<p>
+Bola Oficial da Copa do Mundo autografada por Dunga.
+</p>
+
+<p>
+Todo o valor arrecadado será destinado à
+<strong>Josiene Amaral</strong>.
+</p>
+
+<div class="preco">
+R$ 10,00 por número
+</div>
+
+</div>
+
 </section>
 
-<section class="card center">
-<h2 style="color:#d81b60">📅 Sorteio</h2><h2>27/09/2026</h2><p>🎥 Ao vivo pelo Instagram</p>
-<a class="instagram" href="https://www.instagram.com/donajosi/" target="_blank" rel="noopener">📸 @Donajosi</a>
-</section>
+
+<!-- SORTEIO -->
 
 <section class="card center">
-<h2>💖 PIX</h2><p><strong>Chave:</strong><br>91 98315-1503</p>
-<img src="qrcode_pix.png" class="qrcode" alt="QR Code PIX">
-<h3 style="color:#d81b60">📋 PIX Copia e Cola</h3>
-<div class="pixcode"><span id="pixCodigo">00020126360014br.gov.bcb.pix0114+55919831515035204000053039865802BR5910NETO RUSSO6009Sao Paulo610901227-20062220518daqr548508072446326304AC6D</span></div>
-<button id="copiarPix" class="btn btn-pix">📋 COPIAR CÓDIGO PIX</button><p id="pixOk" style="display:none;color:#2e7d32;font-weight:bold">✅ Código copiado!</p>
+
+<h2 style="color:#d81b60">
+📅 Sorteio
+</h2>
+
+<h2>
+27/09/2026
+</h2>
+
+<p>
+🎥 Ao vivo pelo Instagram
+</p>
+
+<a
+class="instagram"
+href="https://www.instagram.com/donajosi/"
+target="_blank"
+rel="noopener">
+
+📸 @Donajosi
+
+</a>
+
 </section>
+
+
+<!-- PIX -->
+
+<section class="card center">
+
+<h2>
+💖 PIX
+</h2>
+
+<p>
+<strong>Chave:</strong>
+<br>
+91 98315-1503
+</p>
+
+<img
+src="qrcode_pix.png"
+class="qrcode"
+alt="QR Code PIX">
+
+<h3 style="color:#d81b60">
+📋 PIX Copia e Cola
+</h3>
+
+<div class="pixcode">
+
+<span id="pixCodigo">00020126360014br.gov.bcb.pix0114+55919831515035204000053039865802BR5910NETO RUSSO6009Sao Paulo610901227-20062220518daqr548508072446326304AC6D</span>
+
+</div>
+
+<button
+id="copiarPix"
+class="btn btn-pix">
+
+📋 COPIAR CÓDIGO PIX
+
+</button>
+
+<p
+id="pixOk"
+style="
+display:none;
+color:#2e7d32;
+font-weight:bold;
+">
+
+✅ Código copiado!
+
+</p>
+
+</section>
+
+
+<!-- ANDAMENTO -->
 
 <section class="card">
-<h2>📊 Andamento</h2>
+
+<h2>
+📊 Andamento
+</h2>
+
 <div class="stats">
-<div class="stat"><strong id="qVend">0</strong>Vendidos</div>
-<div class="stat"><strong id="qRes">0</strong>Reservados</div>
-<div class="stat"><strong id="qDisp">300</strong>Disponíveis</div>
-<div class="stat"><strong id="valorArrec">R$ 0,00</strong>Arrecadado</div>
+
+<div class="stat">
+
+<strong id="qVend">
+0
+</strong>
+
+Vendidos
+
 </div>
-<div class="progress"><div id="barra"></div></div>
+
+
+<div class="stat">
+
+<strong id="qRes">
+0
+</strong>
+
+Reservados
+
+</div>
+
+
+<div class="stat">
+
+<strong id="qDisp">
+300
+</strong>
+
+Disponíveis
+
+</div>
+
+
+<div class="stat">
+
+<strong id="valorArrec">
+R$ 0,00
+</strong>
+
+Arrecadado
+
+</div>
+
+</div>
+
+<div class="progress">
+
+<div id="barra"></div>
+
+</div>
+
 </section>
 
+
+<!-- NÚMEROS -->
+
 <section class="card">
-<h2>🎟️ Escolha seus números</h2>
-<p>Escolha um ou mais números verdes, preencha seus dados e clique em <strong>Reservar números</strong>.</p>
+
+<h2>
+🎟️ Escolha seus números
+</h2>
+
+<p>
+Escolha um ou mais números verdes, preencha seus dados e clique em
+<strong>Reservar números</strong>.
+</p>
+
+
 <div class="legend">
-<span><span class="dot" style="background:#c8e6c9"></span>Disponível</span>
-<span><span class="dot" style="background:#ffd54f"></span>Selecionado</span>
-<span><span class="dot" style="background:#ffb74d"></span>Reservado</span>
-<span><span class="dot" style="background:#e53935"></span>Vendido</span>
+
+<span>
+<span
+class="dot"
+style="background:#c8e6c9">
+</span>
+Disponível
+</span>
+
+<span>
+<span
+class="dot"
+style="background:#ffd54f">
+</span>
+Selecionado
+</span>
+
+<span>
+<span
+class="dot"
+style="background:#ffb74d">
+</span>
+Reservado
+</span>
+
+<span>
+<span
+class="dot"
+style="background:#e53935">
+</span>
+Vendido
+</span>
+
 </div>
+
 
 <div class="box center">
-<div>Selecionados: <strong id="qSel">0</strong></div>
-<div id="listaSel" style="font-weight:bold;margin:10px 0">Nenhum número selecionado</div>
-<div>Total: <strong id="valorSel">R$ 0,00</strong></div>
+
+<div>
+
+Selecionados:
+<strong id="qSel">
+0
+</strong>
+
 </div>
+
+<div
+id="listaSel"
+style="
+font-weight:bold;
+margin:10px 0;
+">
+
+Nenhum número selecionado
+
+</div>
+
+<div>
+
+Total:
+<strong id="valorSel">
+R$ 0,00
+</strong>
+
+</div>
+
+</div>
+
 
 <div class="box">
-<h3>👤 Seus dados</h3>
+
+<h3>
+👤 Seus dados
+</h3>
+
 <div class="formgrid">
-<div><label>Nome completo</label><input id="nome" class="field" maxlength="80" placeholder="Seu nome completo"></div>
-<div><label>WhatsApp</label><input id="fone" class="field" inputmode="tel" maxlength="20" placeholder="91 99999-9999"></div>
+
+
+<div>
+
+<label>
+Nome completo
+</label>
+
+<input
+id="nome"
+class="field"
+maxlength="80"
+placeholder="Seu nome completo">
+
 </div>
-<button id="reservar" class="btn btn-whats" disabled>⏱️ RESERVAR POR 1 HORA</button>
-<p id="msgReserva" style="font-weight:bold"></p>
+
+
+<div>
+
+<label>
+WhatsApp
+</label>
+
+<input
+id="fone"
+class="field"
+inputmode="tel"
+maxlength="20"
+placeholder="91 99999-9999">
+
 </div>
 
-<div id="grid" class="grid"></div>
-<div id="status" class="status">Conectando ao Firebase...</div>
+
+</div>
+
+
+<button
+id="reservar"
+class="btn btn-whats"
+disabled>
+
+⏱️ RESERVAR POR 1 HORA
+
+</button>
+
+
+<p
+id="msgReserva"
+style="
+font-weight:bold;
+">
+</p>
+
+</div>
+
+
+<div
+id="grid"
+class="grid">
+</div>
+
+
+<div
+id="status"
+class="status">
+
+Conectando ao Firebase...
+
+</div>
+
 </section>
 
-<section id="resInfo" class="card resinfo">
-<h2>✅ Reserva realizada</h2>
-<p><strong>Números:</strong> <span id="resNums"></span></p>
-<p><strong>Valor:</strong> <span id="resValor"></span></p>
-<p>Os números ficam reservados por até <strong>1 hora</strong>. Envie o comprovante para confirmação.</p>
+
+<!-- RESERVA DO PARTICIPANTE -->
+
+<section
+id="resInfo"
+class="card resinfo">
+
+<h2>
+✅ Reserva realizada
+</h2>
+
+<p>
+
+<strong>Números:</strong>
+
+<span id="resNums"></span>
+
+</p>
+
+<p>
+
+<strong>Valor:</strong>
+
+<span id="resValor"></span>
+
+</p>
+
+<p>
+
+Os números ficam reservados por até
+<strong>1 hora</strong>.
+
+Envie o comprovante para confirmação.
+
+</p>
+
 </section>
 
-<section id="admin" class="card admin">
-<h2>🔐 Painel administrativo</h2><p>Administrador: <strong id="adminEmail"></strong></p>
-<button id="logout" class="btn btn-dark">Sair</button><hr>
-<h2>🟠 Reservas aguardando pagamento</h2><div id="reservasAdmin">Nenhuma reserva.</div><hr>
-<h2>✅ Participantes confirmados</h2>
-<button id="csv" class="btn btn-ok">📥 BAIXAR LISTA DO SORTEIO</button>
-<div id="participantesAdmin">Nenhum participante confirmado.</div>
+
+<!-- ADMIN -->
+
+<section
+id="admin"
+class="card admin">
+
+<h2>
+🔐 Painel administrativo
+</h2>
+
+<p>
+
+Administrador:
+
+<strong id="adminEmail"></strong>
+
+</p>
+
+<button
+id="logout"
+class="btn btn-dark">
+
+Sair
+
+</button>
+
+<hr>
+
+<h2>
+🟠 Reservas aguardando pagamento
+</h2>
+
+<div id="reservasAdmin">
+
+Nenhuma reserva.
+
+</div>
+
+<hr>
+
+<h2>
+✅ Participantes confirmados
+</h2>
+
+<button
+id="csv"
+class="btn btn-ok">
+
+📥 BAIXAR LISTA DO SORTEIO
+
+</button>
+
+<div id="participantesAdmin">
+
+Nenhum participante confirmado.
+
+</div>
+
 </section>
+
 </main>
 
-<footer>❤️ Todo o valor arrecadado será destinado à Josiene Amaral.<br><br>Juntos podemos fazer a diferença.</footer>
-<button id="gear" class="fab">⚙️</button>
 
-<div id="modal" class="modal">
+<footer>
+
+❤️ Todo o valor arrecadado será destinado à Josiene Amaral.
+
+<br><br>
+
+Juntos podemos fazer a diferença.
+
+</footer>
+
+
+<button
+id="gear"
+class="fab">
+
+⚙️
+
+</button>
+
+
+<!-- LOGIN -->
+
+<div
+id="modal"
+class="modal">
+
 <div class="modalbox">
-<h3>🔐 Acesso administrativo</h3>
-<input id="email" class="field" type="email" placeholder="E-mail">
-<input id="senha" class="field" type="password" placeholder="Senha">
-<div class="actions"><button id="entrar" class="btn btn-dark">Entrar</button><button id="fechar" class="btn btn-light">Cancelar</button></div>
-<p id="loginMsg" style="color:#c62828"></p>
+
+<h3>
+🔐 Acesso administrativo
+</h3>
+
+<input
+id="email"
+class="field"
+type="email"
+placeholder="E-mail">
+
+<input
+id="senha"
+class="field"
+type="password"
+placeholder="Senha">
+
+<div class="actions">
+
+<button
+id="entrar"
+class="btn btn-dark">
+
+Entrar
+
+</button>
+
+<button
+id="fechar"
+class="btn btn-light">
+
+Cancelar
+
+</button>
+
 </div>
+
+<p
+id="loginMsg"
+style="
+color:#c62828;
+">
+</p>
+
 </div>
+
+</div>
+
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import {getAuth,signInAnonymously,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
-import {getDatabase,ref,onValue,push,update} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
-const cfg={
-apiKey:"AIzaSyAIAcZ5S3yURjjzllWI97s4wz3Wl3k_a3A",
-authDomain:"rifa-dona-josi.firebaseapp.com",
-databaseURL:"https://rifa-dona-josi-default-rtdb.firebaseio.com",
-projectId:"rifa-dona-josi",
-storageBucket:"rifa-dona-josi.firebasestorage.app",
-messagingSenderId:"418787514631",
-appId:"1:418787514631:web:360fc51850940fe41e4da2"
-};
-const ADMIN_UID="lioq8PxzEsQ4uKHC6YLAXmHXEK93",TOTAL=300,VALOR=10,HORA=3600000;
-const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
-let user=null,isAdmin=false,vendidos=new Set(),numDB={},selecionados=new Set(),reservas={},participantes={},offset=0,offRes=null,offPart=null;
-
-const $=id=>document.getElementById(id),fmt=n=>String(n).padStart(3,"0"),agora=()=>Date.now()+offset;
-onValue(ref(db,".info/serverTimeOffset"),s=>offset=s.val()||0);
-
-onAuthStateChanged(auth,async u=>{
- user=u;
- if(!u){try{await signInAnonymously(auth)}catch(e){console.error(e)}return}
- isAdmin=u.uid===ADMIN_UID;
- $("admin").classList.toggle("on",isAdmin);
- $("adminEmail").textContent=isAdmin?(u.email||"Administrador"):"";
- if(isAdmin)carregarAdmin();else desligarAdmin();
- atualizaBotao();
-});
-
-$("copiarPix").onclick=async()=>{
- const c=$("pixCodigo").innerText.trim();
- try{await navigator.clipboard.writeText(c)}catch(e){const t=document.createElement("textarea");t.value=c;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
- $("pixOk").style.display="block";setTimeout(()=>$("pixOk").style.display="none",3000);
-};
-
-onValue(ref(db,"vendidos"),s=>{
- const d=s.val()||{};
- vendidos=new Set(Object.keys(d).filter(k=>!!d[k]).map(Number).filter(Number.isInteger));
- resumo();desenha();
-});
-
-onValue(ref(db,"numeros"),s=>{
- numDB=s.val()||{};
- limparExpiradas();
- for(const n of [...selecionados])if(vendidos.has(n)||reservado(n))selecionados.delete(n);
- selecao();resumo();desenha();$("status").textContent="✅ Atualizado em tempo real.";
-},e=>{$("status").textContent="⚠️ Não foi possível carregar os números.";console.error(e)});
-
-function reservado(n){const x=numDB[fmt(n)];return !!(x&&x.status==="reservado"&&Number(x.expiraEm)>agora())}
-function qtdReservados(){return Object.values(numDB).filter(x=>x&&x.status==="reservado"&&Number(x.expiraEm)>agora()).length}
-
-function desenha(){
- $("grid").innerHTML="";
- for(let i=1;i<=TOTAL;i++){
-  const b=document.createElement("button");b.className="numero";b.textContent=fmt(i);
-  if(vendidos.has(i))b.classList.add("vend");else if(reservado(i))b.classList.add("res");else if(selecionados.has(i))b.classList.add("sel");
-  b.onclick=()=>{
-   if(isAdmin)return;
-   if(vendidos.has(i)){alert("Número já vendido.");return}
-   if(reservado(i)){alert("Número reservado aguardando pagamento.");return}
-   selecionados.has(i)?selecionados.delete(i):selecionados.add(i);selecao();desenha();
-  };
-  $("grid").appendChild(b);
- }
+import {
+initializeApp
 }
+from
+"https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
 
-function selecao(){
- const l=[...selecionados].sort((a,b)=>a-b);
- $("qSel").textContent=l.length;$("listaSel").textContent=l.length?l.map(fmt).join(", "):"Nenhum número selecionado";
- $("valorSel").textContent=(l.length*VALOR).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});atualizaBotao();
-}
-function atualizaBotao(){
- const n=$("nome").value.trim(),f=$("fone").value.replace(/\D/g,"");
- $("reservar").disabled=!(user&&!isAdmin&&selecionados.size&&n.length>=3&&f.length>=10);
-}
-$("nome").oninput=atualizaBotao;$("fone").oninput=atualizaBotao;
 
-$("reservar").onclick=async()=>{
- if(!user||isAdmin)return;
- const nome=$("nome").value.trim(),fone=$("fone").value.trim(),foneLimpo=fone.replace(/\D/g,""),lista=[...selecionados].sort((a,b)=>a-b);
- if(nome.length<3||foneLimpo.length<10||!lista.length)return;
- const w=window.open("","_blank"),criadoEm=agora(),expiraEm=criadoEm+HORA,r=push(ref(db,"reservas")),id=r.key,nums=lista.map(fmt),total=nums.length*VALOR,up={};
- nums.forEach(n=>up[`numeros/${n}`]={status:"reservado",uid:user.uid,reservaId:id,expiraEm});
- up[`reservas/${id}`]={uid:user.uid,nome,telefone:fone,telefoneLimpo:foneLimpo,numeros:nums,quantidade:nums.length,valor:total,status:"reservado",criadoEm,expiraEm};
- $("reservar").disabled=true;$("msgReserva").textContent="Reservando...";
- try{
-  await update(ref(db),up);
-  $("msgReserva").textContent="✅ Reserva realizada. Envie o comprovante pelo WhatsApp.";
-  $("resInfo").classList.add("on");$("resNums").textContent=nums.join(", ");$("resValor").textContent=total.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-  const msg=`🎟️ NOVA RESERVA - RIFA DONA JOSI\n\nNome: ${nome}\nTelefone: ${fone}\n\nNúmeros: ${nums.join(", ")}\nQuantidade: ${nums.length}\nValor: ${total.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}\n\n⏱️ Reserva válida por 1 hora.\nFiz o pedido e vou enviar o comprovante do PIX.`;
-  const url=`https://wa.me/5591983151503?text=${encodeURIComponent(msg)}`;w?w.location.href=url:window.location.href=url;
-  selecionados.clear();$("nome").value="";$("fone").value="";selecao();
- }catch(e){
-  console.error(e);if(w)w.close();$("msgReserva").textContent="❌ Não foi possível reservar. Algum número pode ter sido reservado por outra pessoa.";atualizaBotao();
- }
+import {
+getAuth,
+signInAnonymously,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+
+import {
+getDatabase,
+ref,
+onValue,
+push,
+update
+}
+from
+"https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+
+
+const cfg = {
+
+apiKey:
+"AIzaSyAIAcZ5S3yURjjzllWI97s4wz3Wl3k_a3A",
+
+authDomain:
+"rifa-dona-josi.firebaseapp.com",
+
+databaseURL:
+"https://rifa-dona-josi-default-rtdb.firebaseio.com",
+
+projectId:
+"rifa-dona-josi",
+
+storageBucket:
+"rifa-dona-josi.firebasestorage.app",
+
+messagingSenderId:
+"418787514631",
+
+appId:
+"1:418787514631:web:360fc51850940fe41e4da2"
+
 };
 
-let limpando=false;
-async function limparExpiradas(){
- if(limpando||!user)return;
- const up={},ids=new Set(),t=agora();
- for(const [n,x] of Object.entries(numDB))if(x&&x.status==="reservado"&&Number(x.expiraEm)<=t){up[`numeros/${n}`]=null;if(x.reservaId)ids.add(x.reservaId)}
- ids.forEach(id=>up[`reservas/${id}`]=null);
- if(!Object.keys(up).length)return;
- limpando=true;try{await update(ref(db),up)}catch(e){}finally{limpando=false}
-}
-setInterval(limparExpiradas,30000);
 
-function resumo(){
- const v=vendidos.size,r=qtdReservados();$("qVend").textContent=v;$("qRes").textContent=r;$("qDisp").textContent=Math.max(0,TOTAL-v-r);
- $("valorArrec").textContent=(v*VALOR).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});$("barra").style.width=(v/TOTAL*100)+"%";
+const ADMIN_UID =
+"lioq8PxzEsQ4uKHC6YLAXmHXEK93";
+
+
+const TOTAL = 300;
+
+const VALOR = 10;
+
+const HORA = 3600000;
+
+
+const app =
+initializeApp(cfg);
+
+
+const auth =
+getAuth(app);
+
+
+const db =
+getDatabase(app);
+
+
+let user = null;
+
+let isAdmin = false;
+
+let vendidos =
+new Set();
+
+let numDB = {};
+
+let selecionados =
+new Set();
+
+let reservas = {};
+
+let participantes = {};
+
+let offset = 0;
+
+let offRes = null;
+
+let offPart = null;
+
+
+const $ =
+id =>
+document.getElementById(id);
+
+
+const fmt =
+n =>
+String(n).padStart(3,"0");
+
+
+const agora =
+() =>
+Date.now() + offset;
+
+
+/* HORÁRIO DO FIREBASE */
+
+
+onValue(
+
+ref(
+db,
+".info/serverTimeOffset"
+),
+
+s =>
+
+offset =
+s.val() || 0
+
+);
+
+
+/* AUTENTICAÇÃO */
+
+
+onAuthStateChanged(
+
+auth,
+
+async u => {
+
+
+user = u;
+
+
+if(!u){
+
+try{
+
+await signInAnonymously(auth);
+
 }
 
-$("gear").onclick=()=>isAdmin?$("admin").scrollIntoView({behavior:"smooth"}):$("modal").classList.add("on");
-$("fechar").onclick=()=>$("modal").classList.remove("on");
-$("entrar").onclick=async()=>{
- try{
-  const c=await signInWithEmailAndPassword(auth,$("email").value.trim(),$("senha").value);
-  if(c.user.uid!==ADMIN_UID){await signOut(auth);$("loginMsg").textContent="Usuário sem permissão.";return}
-  $("modal").classList.remove("on");$("senha").value="";
- }catch(e){$("loginMsg").textContent="E-mail ou senha inválidos."}
+catch(e){
+
+console.error(e);
+
+}
+
+return;
+
+}
+
+
+isAdmin =
+u.uid === ADMIN_UID;
+
+
+$("admin")
+.classList
+.toggle(
+"on",
+isAdmin
+);
+
+
+$("adminEmail")
+.textContent =
+isAdmin
+?
+(u.email || "Administrador")
+:
+"";
+
+
+if(isAdmin){
+
+carregarAdmin();
+
+}
+
+else{
+
+desligarAdmin();
+
+}
+
+
+atualizaBotao();
+
+}
+
+);
+
+
+/* PIX */
+
+
+$("copiarPix")
+.onclick =
+async () => {
+
+
+const c =
+$("pixCodigo")
+.innerText
+.trim();
+
+
+try{
+
+await navigator
+.clipboard
+.writeText(c);
+
+}
+
+catch(e){
+
+const t =
+document.createElement(
+"textarea"
+);
+
+t.value = c;
+
+document.body
+.appendChild(t);
+
+t.select();
+
+document.execCommand(
+"copy"
+);
+
+t.remove();
+
+}
+
+
+$("pixOk")
+.style
+.display =
+"block";
+
+
+setTimeout(
+
+() =>
+
+$("pixOk")
+.style
+.display =
+"none",
+
+3000
+
+);
+
 };
-$("logout").onclick=async()=>{await signOut(auth);await signInAnonymously(auth)};
 
-function desligarAdmin(){if(offRes){offRes();offRes=null}if(offPart){offPart();offPart=null}}
-function carregarAdmin(){
- desligarAdmin();
- offRes=onValue(ref(db,"reservas"),s=>{reservas=s.val()||{};mostraReservas()});
- offPart=onValue(ref(db,"participantes"),s=>{participantes=s.val()||{};mostraParticipantes()});
+
+/* VENDIDOS */
+
+
+onValue(
+
+ref(
+db,
+"vendidos"
+),
+
+s => {
+
+
+const d =
+s.val() || {};
+
+
+vendidos =
+new Set(
+
+Object
+.keys(d)
+
+.filter(
+k =>
+!!d[k]
+)
+
+.map(Number)
+
+.filter(
+Number.isInteger
+)
+
+);
+
+
+resumo();
+
+desenha();
+
 }
 
-function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
-function mostraReservas(){
- const c=$("reservasAdmin");c.innerHTML="";
- const l=Object.entries(reservas).filter(([id,r])=>r&&r.status==="reservado"&&Number(r.expiraEm)>agora()).sort((a,b)=>Number(a[1].criadoEm||0)-Number(b[1].criadoEm||0));
- if(!l.length){c.textContent="Nenhuma reserva aguardando pagamento.";return}
- for(const [id,r] of l){
-  const nums=Array.isArray(r.numeros)?r.numeros:[],d=document.createElement("div");d.className="item";
-  d.innerHTML=`<strong>${esc(r.nome)}</strong><br>📱 ${esc(r.telefone)}<br>🎟️ ${nums.map(esc).join(", ")}<br>💰 ${Number(r.valor||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}<br><small>Reserva válida por até 1 hora.</small><div class="actions"><button class="btn btn-ok ok">✅ Confirmar pagamento</button><button class="btn btn-danger cancel">❌ Cancelar reserva</button></div>`;
-  d.querySelector(".ok").onclick=()=>confirmar(id,r);d.querySelector(".cancel").onclick=()=>cancelar(id,r);c.appendChild(d);
- }
+);
+
+
+/* NÚMEROS / RESERVAS */
+
+
+onValue(
+
+ref(
+db,
+"numeros"
+),
+
+s => {
+
+
+numDB =
+s.val() || {};
+
+
+limparExpiradas();
+
+
+for(
+const n
+of
+[...selecionados]
+){
+
+if(
+vendidos.has(n)
+||
+reservado(n)
+){
+
+selecionados
+.delete(n);
+
 }
 
-async function confirmar(id,r){
- if(!isAdmin||Number(r.expiraEm)<=agora()){alert("Reserva expirada.");limparExpiradas();return}
- if(!confirm(`Confirmar pagamento de ${r.nome}?`))return;
- const nums=Array.isArray(r.numeros)?r.numeros:[],up={},confirmadoEm=agora();
- nums.forEach(n=>{up[`vendidos/${n}`]=true;up[`numeros/${n}`]=null});
- up[`participantes/${id}`]={nome:r.nome||"",telefone:r.telefone||"",telefoneLimpo:r.telefoneLimpo||"",numeros:nums,quantidade:Number(r.quantidade||nums.length),valor:Number(r.valor||nums.length*VALOR),status:"pago",confirmadoEm};
- up[`reservas/${id}`]=null;
- try{await update(ref(db),up);alert("✅ Pagamento confirmado.")}catch(e){console.error(e);alert("Erro ao confirmar.")}
 }
 
-async function cancelar(id,r){
- if(!isAdmin||!confirm(`Cancelar a reserva de ${r.nome}?`))return;
- const up={},nums=Array.isArray(r.numeros)?r.numeros:[];
- nums.forEach(n=>{const x=numDB[n];if(x&&x.reservaId===id)up[`numeros/${n}`]=null});up[`reservas/${id}`]=null;
- try{await update(ref(db),up)}catch(e){alert("Erro ao cancelar.")}
-}
-
-function mostraParticipantes(){
- const c=$("participantesAdmin");c.innerHTML="";
- const l=Object.entries(participantes).sort((a,b)=>Number(a[1].confirmadoEm||0)-Number(b[1].confirmadoEm||0));
- if(!l.length){c.textContent="Nenhum participante confirmado.";return}
- for(const [id,p] of l){
-  const nums=Array.isArray(p.numeros)?p.numeros:[],d=document.createElement("div");d.className="item pago";
-  d.innerHTML=`<strong>${esc(p.nome)}</strong><br>📱 ${esc(p.telefone)}<br>🎟️ ${nums.map(esc).join(", ")}<br>💰 ${Number(p.valor||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}<div class="actions"><button class="btn btn-warn undo">↩️ Desfazer confirmação</button></div>`;
-  d.querySelector(".undo").onclick=()=>desfazer(id,p);c.appendChild(d);
- }
-}
-
-async function desfazer(id,p){
- if(!isAdmin)return;
- const nums=Array.isArray(p.numeros)?p.numeros:[];
- if(!confirm(`Desfazer a confirmação de ${p.nome}?\n\nOs números ${nums.join(", ")} voltarão a ficar disponíveis e o participante será removido da lista do sorteio.`))return;
- const up={};nums.forEach(n=>up[`vendidos/${n}`]=null);up[`participantes/${id}`]=null;
- try{await update(ref(db),up);alert("↩️ Confirmação desfeita.")}catch(e){console.error(e);alert("Erro ao desfazer confirmação.")}
-}
-
-$("csv").onclick=()=>{
- if(!isAdmin)return;
- const rows=[["Numero","Nome","Telefone","Quantidade","Valor","ConfirmadoEm"]];
- for(const p of Object.values(participantes)){const nums=Array.isArray(p.numeros)?p.numeros:[];for(const n of nums)rows.push([n,p.nome||"",p.telefone||"",p.quantidade||nums.length,p.valor||nums.length*VALOR,p.confirmadoEm?new Date(p.confirmadoEm).toLocaleString("pt-BR"):""])}
- const csv=rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(";")).join("\n"),blob=new Blob(["\uFEFF",csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");
- a.href=url;a.download="participantes_rifa_dona_josi.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
-};
 
 selecao();
+
+resumo();
+
+desenha();
+
+
+$("status")
+.textContent =
+
+"✅ Atualizado em tempo real.";
+
+},
+
+e => {
+
+$("status")
+.textContent =
+
+"⚠️ Não foi possível carregar os números.";
+
+console.error(e);
+
+}
+
+);
+
+
+/* ESTADO DE RESERVA */
+
+
+function reservado(n){
+
+const x =
+numDB[
+fmt(n)
+];
+
+return !!(
+
+x
+
+&&
+
+x.status ===
+"reservado"
+
+&&
+
+Number(
+x.expiraEm
+)
+>
+agora()
+
+);
+
+}
+
+
+function qtdReservados(){
+
+return Object
+.values(
+numDB
+)
+
+.filter(
+
+x =>
+
+x
+
+&&
+
+x.status ===
+"reservado"
+
+&&
+
+Number(
+x.expiraEm
+)
+>
+agora()
+
+)
+
+.length;
+
+}
+
+
+/* GRID */
+
+
+function desenha(){
+
+$("grid")
+.innerHTML =
+"";
+
+
+for(
+let i=1;
+i<=TOTAL;
+i++
+){
+
+const b =
+document
+.createElement(
+"button"
+);
+
+
+b.className =
+"numero";
+
+
+b.textContent =
+fmt(i);
+
+
+if(
+vendidos.has(i)
+){
+
+b.classList
+.add(
+"vend"
+);
+
+}
+
+else if(
+reservado(i)
+){
+
+b.classList
+.add(
+"res"
+);
+
+}
+
+else if(
+selecionados.has(i)
+){
+
+b.classList
+.add(
+"sel"
+);
+
+}
+
+
+b.onclick = () => {
+
+
+if(isAdmin){
+
+return;
+
+}
+
+
+if(
+vendidos.has(i)
+){
+
+alert(
+"Número já vendido."
+);
+
+return;
+
+}
+
+
+if(
+reservado(i)
+){
+
+alert(
+"Número reservado aguardando pagamento."
+);
+
+return;
+
+}
+
+
+if(
+selecionados.has(i)
+){
+
+selecionados
+.delete(i);
+
+}
+
+else{
+
+selecionados
+.add(i);
+
+}
+
+
+selecao();
+
+desenha();
+
+};
+
+
+$("grid")
+.appendChild(b);
+
+}
+
+}
+
+
+/* SELEÇÃO */
+
+
+function selecao(){
+
+const l =
+[...selecionados]
+.sort(
+(a,b) =>
+a-b
+);
+
+
+$("qSel")
+.textContent =
+l.length;
+
+
+$("listaSel")
+.textContent =
+
+l.length
+
+?
+
+l
+.map(fmt)
+.join(", ")
+
+:
+
+"Nenhum número selecionado";
+
+
+$("valorSel")
+.textContent =
+
+(
+l.length * VALOR
+)
+
+.toLocaleString(
+
+"pt-BR",
+
+{
+
+style:"currency",
+
+currency:"BRL"
+
+}
+
+);
+
+
+atualizaBotao();
+
+}
+
+
+function atualizaBotao(){
+
+const n =
+$("nome")
+.value
+.trim();
+
+
+const f =
+$("fone")
+.value
+.replace(
+/\D/g,
+""
+);
+
+
+$("reservar")
+.disabled =
+!(
+
+user
+
+&&
+
+!isAdmin
+
+&&
+
+selecionados.size
+
+&&
+
+n.length >= 3
+
+&&
+
+f.length >= 10
+
+);
+
+}
+
+
+$("nome")
+.oninput =
+atualizaBotao;
+
+
+$("fone")
+.oninput =
+atualizaBotao;
+
+
+/* RESERVAR */
+
+
+$("reservar")
+.onclick =
+async () => {
+
+
+if(
+!user
+||
+isAdmin
+){
+
+return;
+
+}
+
+
+const nome =
+$("nome")
+.value
+.trim();
+
+
+const fone =
+$("fone")
+.value
+.trim();
+
+
+const foneLimpo =
+fone.replace(
+/\D/g,
+""
+);
+
+
+const lista =
+[...selecionados]
+.sort(
+(a,b) =>
+a-b
+);
+
+
+if(
+nome.length < 3
+||
+foneLimpo.length < 10
+||
+!lista.length
+){
+
+return;
+
+}
+
+
+const w =
+window.open(
+"",
+"_blank"
+);
+
+
+const criadoEm =
+agora();
+
+
+const expiraEm =
+criadoEm + HORA;
+
+
+const r =
+push(
+ref(
+db,
+"reservas"
+)
+);
+
+
+const id =
+r.key;
+
+
+const nums =
+lista.map(fmt);
+
+
+const total =
+nums.length * VALOR;
+
+
+const up = {};
+
+
+nums.forEach(
+
+n =>
+
+up[
+`numeros/${n}`
+] = {
+
+status:
+"reservado",
+
+uid:
+user.uid,
+
+reservaId:
+id,
+
+expiraEm
+
+}
+
+);
+
+
+up[
+`reservas/${id}`
+] = {
+
+uid:
+user.uid,
+
+nome,
+
+telefone:
+fone,
+
+telefoneLimpo:
+foneLimpo,
+
+numeros:
+nums,
+
+quantidade:
+nums.length,
+
+valor:
+total,
+
+status:
+"reservado",
+
+criadoEm,
+
+expiraEm
+
+};
+
+
+$("reservar")
+.disabled =
+true;
+
+
+$("msgReserva")
+.textContent =
+
+"Reservando...";
+
+
+try{
+
+
+await update(
+
+ref(db),
+
+up
+
+);
+
+
+$("msgReserva")
+.textContent =
+
+"✅ Reserva realizada. Envie o comprovante pelo WhatsApp.";
+
+
+$("resInfo")
+.classList
+.add(
+"on"
+);
+
+
+$("resNums")
+.textContent =
+
+nums.join(", ");
+
+
+$("resValor")
+.textContent =
+
+total
+.toLocaleString(
+
+"pt-BR",
+
+{
+
+style:"currency",
+
+currency:"BRL"
+
+}
+
+);
+
+
+const msg =
+
+`🎟️ NOVA RESERVA - RIFA DONA JOSI
+
+Nome: ${nome}
+Telefone: ${fone}
+
+Números: ${nums.join(", ")}
+Quantidade: ${nums.length}
+Valor: ${total.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+
+⏱️ Reserva válida por 1 hora.
+
+Fiz o pedido e vou enviar o comprovante do PIX.`;
+
+
+const url =
+
+`https://wa.me/5591983151503?text=${encodeURIComponent(msg)}`;
+
+
+if(w){
+
+w.location.href =
+url;
+
+}
+
+else{
+
+window.location.href =
+url;
+
+}
+
+
+selecionados
+.clear();
+
+
+$("nome")
+.value =
+"";
+
+
+$("fone")
+.value =
+"";
+
+
+selecao();
+
+}
+
+catch(e){
+
+
+console.error(e);
+
+
+if(w){
+
+w.close();
+
+}
+
+
+$("msgReserva")
+.textContent =
+
+"❌ Não foi possível reservar. Algum número pode ter sido reservado por outra pessoa.";
+
+
+atualizaBotao();
+
+}
+
+};
+
+
+/* LIMPEZA DE RESERVAS EXPIRADAS */
+
+
+let limpando =
+false;
+
+
+async function limparExpiradas(){
+
+
+if(
+limpando
+||
+!user
+){
+
+return;
+
+}
+
+
+const up = {};
+
+const ids =
+new Set();
+
+const t =
+agora();
+
+
+for(
+const [
+n,
+x
+]
+of
+Object.entries(
+numDB
+)
+){
+
+if(
+
+x
+
+&&
+
+x.status ===
+"reservado"
+
+&&
+
+Number(
+x.expiraEm
+)
+<=
+t
+
+){
+
+up[
+`numeros/${n}`
+] =
+null;
+
+
+if(
+x.reservaId
+){
+
+ids.add(
+x.reservaId
+);
+
+}
+
+}
+
+}
+
+
+ids.forEach(
+
+id =>
+
+up[
+`reservas/${id}`
+] =
+null
+
+);
+
+
+if(
+!Object.keys(up).length
+){
+
+return;
+
+}
+
+
+limpando =
+true;
+
+
+try{
+
+await update(
+
+ref(db),
+
+up
+
+);
+
+}
+
+catch(e){
+
+console.log(
+"Limpeza aguardando próxima tentativa."
+);
+
+}
+
+finally{
+
+limpando =
+false;
+
+}
+
+}
+
+
+setInterval(
+
+limparExpiradas,
+
+30000
+
+);
+
+
+/* RESUMO */
+
+
+function resumo(){
+
+const v =
+vendidos.size;
+
+
+const r =
+qtdReservados();
+
+
+$("qVend")
+.textContent =
+v;
+
+
+$("qRes")
+.textContent =
+r;
+
+
+$("qDisp")
+.textContent =
+
+Math.max(
+
+0,
+
+TOTAL - v - r
+
+);
+
+
+$("valorArrec")
+.textContent =
+
+(
+v * VALOR
+)
+
+.toLocaleString(
+
+"pt-BR",
+
+{
+
+style:"currency",
+
+currency:"BRL"
+
+}
+
+);
+
+
+$("barra")
+.style
+.width =
+
+(
+v
+/
+TOTAL
+*
+100
+)
+
++
+
+"%";
+
+}
+
+
+/* LOGIN ADMIN */
+
+
+$("gear")
+.onclick = () => {
+
+
+if(isAdmin){
+
+$("admin")
+.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+else{
+
+$("modal")
+.classList
+.add(
+"on"
+);
+
+}
+
+};
+
+
+$("fechar")
+.onclick = () =>
+
+$("modal")
+.classList
+.remove(
+"on"
+);
+
+
+$("entrar")
+.onclick =
+async () => {
+
+
+try{
+
+
+const c =
+
+await signInWithEmailAndPassword(
+
+auth,
+
+$("email")
+.value
+.trim(),
+
+$("senha")
+.value
+
+);
+
+
+if(
+c.user.uid
+!==
+ADMIN_UID
+){
+
+await signOut(auth);
+
+
+$("loginMsg")
+.textContent =
+
+"Usuário sem permissão.";
+
+
+return;
+
+}
+
+
+$("modal")
+.classList
+.remove(
+"on"
+);
+
+
+$("senha")
+.value =
+"";
+
+}
+
+catch(e){
+
+
+$("loginMsg")
+.textContent =
+
+"E-mail ou senha inválidos.";
+
+}
+
+};
+
+
+$("logout")
+.onclick =
+async () => {
+
+
+await signOut(auth);
+
+
+await signInAnonymously(auth);
+
+};
+
+
+/* ADMIN */
+
+
+function desligarAdmin(){
+
+
+if(offRes){
+
+offRes();
+
+offRes =
+null;
+
+}
+
+
+if(offPart){
+
+offPart();
+
+offPart =
+null;
+
+}
+
+}
+
+
+function carregarAdmin(){
+
+
+desligarAdmin();
+
+
+offRes =
+onValue(
+
+ref(
+db,
+"reservas"
+),
+
+s => {
+
+
+reservas =
+s.val() || {};
+
+
+mostraReservas();
+
+}
+
+);
+
+
+offPart =
+onValue(
+
+ref(
+db,
+"participantes"
+),
+
+s => {
+
+
+participantes =
+s.val() || {};
+
+
+mostraParticipantes();
+
+}
+
+);
+
+}
+
+
+/* RESERVAS ADMIN */
+
+
+function mostraReservas(){
+
+const c =
+$("reservasAdmin");
+
+
+c.innerHTML =
+"";
+
+
+const l =
+
+Object
+.entries(
+reservas
+)
+
+.filter(
+
+([
+id,
+r
+]) =>
+
+r
+
+&&
+
+r.status ===
+"reservado"
+
+&&
+
+Number(
+r.expiraEm
+)
+>
+agora()
+
+)
+
+.sort(
+
+(a,b) =>
+
+Number(
+a[1].criadoEm || 0
+)
+
+-
+
+Number(
+b[1].criadoEm || 0
+)
+
+);
+
+
+if(
+!l.length
+){
+
+c.textContent =
+
+"Nenhuma reserva aguardando pagamento.";
+
+return;
+
+}
+
+
+for(
+const [
+id,
+r
+]
+of
+l
+){
+
+
+const nums =
+
+Array.isArray(
+r.numeros
+)
+
+?
+
+r.numeros
+
+:
+
+[];
+
+
+const d =
+
+document
+.createElement(
+"div"
+);
+
+
+d.className =
+"item";
+
+
+d.innerHTML = `
+
+<strong>
+${esc(r.nome)}
+</strong>
+
+<br>
+
+📱 ${esc(r.telefone)}
+
+<br>
+
+🎟️ ${nums.map(esc).join(", ")}
+
+<br>
+
+💰 ${Number(r.valor || 0).toLocaleString(
+"pt-BR",
+{
+style:"currency",
+currency:"BRL"
+}
+)}
+
+<br><br>
+
+⏱️ <strong>Tempo restante:</strong>
+
+<span
+class="tempo-restante"
+data-expira="${Number(r.expiraEm)}">
+
+Calculando...
+
+</span>
+
+<div class="actions">
+
+<button
+class="btn btn-ok ok">
+
+✅ Confirmar pagamento
+
+</button>
+
+<button
+class="btn btn-danger cancel">
+
+❌ Cancelar reserva
+
+</button>
+
+</div>
+
+`;
+
+
+d
+.querySelector(
+".ok"
+)
+.onclick = () =>
+
+confirmar(
+id,
+r
+);
+
+
+d
+.querySelector(
+".cancel"
+)
+.onclick = () =>
+
+cancelar(
+id,
+r
+);
+
+
+c.appendChild(d);
+
+}
+
+
+atualizarContadoresAdmin();
+
+}
+
+
+/* CONTADOR SOMENTE PARA ADMIN */
+
+
+function atualizarContadoresAdmin(){
+
+
+if(
+!isAdmin
+){
+
+return;
+
+}
+
+
+const contadores =
+
+document
+.querySelectorAll(
+".tempo-restante"
+);
+
+
+contadores
+.forEach(
+
+el => {
+
+
+const expiraEm =
+
+Number(
+el.dataset.expira
+);
+
+
+const restante =
+
+expiraEm - agora();
+
+
+if(
+restante <= 0
+){
+
+el.textContent =
+
+"EXPIRADA";
+
+
+el.style.color =
+
+"#c62828";
+
+
+el.style.fontWeight =
+
+"bold";
+
+
+return;
+
+}
+
+
+const minutos =
+
+Math.floor(
+
+restante
+/
+60000
+
+);
+
+
+const segundos =
+
+Math.floor(
+
+(
+restante
+%
+60000
+)
+/
+1000
+
+);
+
+
+el.textContent =
+
+String(minutos)
+.padStart(
+2,
+"0"
+)
+
++
+
+"min "
+
++
+
+String(segundos)
+.padStart(
+2,
+"0"
+)
+
++
+
+"s";
+
+
+if(
+minutos < 5
+){
+
+el.style.color =
+
+"#c62828";
+
+}
+
+else if(
+minutos < 15
+){
+
+el.style.color =
+
+"#ef6c00";
+
+}
+
+else{
+
+el.style.color =
+
+"#2e7d32";
+
+}
+
+
+el.style.fontWeight =
+
+"bold";
+
+}
+
+);
+
+}
+
+
+setInterval(
+
+atualizarContadoresAdmin,
+
+1000
+
+);
+
+
+/* CONFIRMAR */
+
+
+async function confirmar(
+id,
+r
+){
+
+
+if(
+!isAdmin
+||
+Number(
+r.expiraEm
+)
+<=
+agora()
+){
+
+alert(
+"Reserva expirada."
+);
+
+limparExpiradas();
+
+return;
+
+}
+
+
+if(
+!confirm(
+`Confirmar pagamento de ${r.nome}?`
+)
+){
+
+return;
+
+}
+
+
+const nums =
+
+Array.isArray(
+r.numeros
+)
+
+?
+
+r.numeros
+
+:
+
+[];
+
+
+const up = {};
+
+
+const confirmadoEm =
+
+agora();
+
+
+nums.forEach(
+
+n => {
+
+up[
+`vendidos/${n}`
+] =
+true;
+
+
+up[
+`numeros/${n}`
+] =
+null;
+
+}
+
+);
+
+
+up[
+`participantes/${id}`
+] = {
+
+nome:
+r.nome || "",
+
+telefone:
+r.telefone || "",
+
+telefoneLimpo:
+r.telefoneLimpo || "",
+
+numeros:
+nums,
+
+quantidade:
+Number(
+r.quantidade || nums.length
+),
+
+valor:
+Number(
+r.valor || nums.length * VALOR
+),
+
+status:
+"pago",
+
+confirmadoEm
+
+};
+
+
+up[
+`reservas/${id}`
+] =
+null;
+
+
+try{
+
+
+await update(
+
+ref(db),
+
+up
+
+);
+
+
+alert(
+"✅ Pagamento confirmado."
+);
+
+}
+
+catch(e){
+
+
+console.error(e);
+
+
+alert(
+"Erro ao confirmar."
+);
+
+}
+
+}
+
+
+/* CANCELAR RESERVA */
+
+
+async function cancelar(
+id,
+r
+){
+
+
+if(
+!isAdmin
+){
+
+return;
+
+}
+
+
+if(
+!confirm(
+`Cancelar a reserva de ${r.nome}?`
+)
+){
+
+return;
+
+}
+
+
+const up = {};
+
+
+const nums =
+
+Array.isArray(
+r.numeros
+)
+
+?
+
+r.numeros
+
+:
+
+[];
+
+
+nums.forEach(
+
+n => {
+
+
+const x =
+numDB[n];
+
+
+if(
+x
+&&
+x.reservaId === id
+){
+
+up[
+`numeros/${n}`
+] =
+null;
+
+}
+
+}
+
+);
+
+
+up[
+`reservas/${id}`
+] =
+null;
+
+
+try{
+
+await update(
+
+ref(db),
+
+up
+
+);
+
+}
+
+catch(e){
+
+alert(
+"Erro ao cancelar."
+);
+
+}
+
+}
+
+
+/* PARTICIPANTES */
+
+
+function mostraParticipantes(){
+
+const c =
+$("participantesAdmin");
+
+
+c.innerHTML =
+"";
+
+
+const l =
+
+Object
+.entries(
+participantes
+)
+
+.sort(
+
+(a,b) =>
+
+Number(
+a[1].confirmadoEm || 0
+)
+
+-
+
+Number(
+b[1].confirmadoEm || 0
+)
+
+);
+
+
+if(
+!l.length
+){
+
+c.textContent =
+
+"Nenhum participante confirmado.";
+
+return;
+
+}
+
+
+for(
+const [
+id,
+p
+]
+of
+l
+){
+
+
+const nums =
+
+Array.isArray(
+p.numeros
+)
+
+?
+
+p.numeros
+
+:
+
+[];
+
+
+const d =
+
+document
+.createElement(
+"div"
+);
+
+
+d.className =
+
+"item pago";
+
+
+d.innerHTML = `
+
+<strong>
+${esc(p.nome)}
+</strong>
+
+<br>
+
+📱 ${esc(p.telefone)}
+
+<br>
+
+🎟️ ${nums.map(esc).join(", ")}
+
+<br>
+
+💰 ${Number(p.valor || 0).toLocaleString(
+"pt-BR",
+{
+style:"currency",
+currency:"BRL"
+}
+)}
+
+<div class="actions">
+
+<button
+class="btn btn-warn undo">
+
+↩️ Desfazer confirmação
+
+</button>
+
+</div>
+
+`;
+
+
+d
+.querySelector(
+".undo"
+)
+.onclick = () =>
+
+desfazer(
+id,
+p
+);
+
+
+c.appendChild(d);
+
+}
+
+}
+
+
+/* DESFAZER CONFIRMAÇÃO */
+
+
+async function desfazer(
+id,
+p
+){
+
+
+if(
+!isAdmin
+){
+
+return;
+
+}
+
+
+const nums =
+
+Array.isArray(
+p.numeros
+)
+
+?
+
+p.numeros
+
+:
+
+[];
+
+
+if(
+!confirm(
+
+`Desfazer a confirmação de ${p.nome}?
+
+Os números ${nums.join(", ")} voltarão a ficar disponíveis e o participante será removido da lista do sorteio.`
+
+)
+){
+
+return;
+
+}
+
+
+const up = {};
+
+
+nums.forEach(
+
+n =>
+
+up[
+`vendidos/${n}`
+] =
+null
+
+);
+
+
+up[
+`participantes/${id}`
+] =
+null;
+
+
+try{
+
+
+await update(
+
+ref(db),
+
+up
+
+);
+
+
+alert(
+"↩️ Confirmação desfeita."
+);
+
+}
+
+catch(e){
+
+
+console.error(e);
+
+
+alert(
+"Erro ao desfazer confirmação."
+);
+
+}
+
+}
+
+
+/* EXPORTAR CSV */
+
+
+$("csv")
+.onclick = () => {
+
+
+if(
+!isAdmin
+){
+
+return;
+
+}
+
+
+const rows = [
+
+[
+"Numero",
+"Nome",
+"Telefone",
+"Quantidade",
+"Valor",
+"ConfirmadoEm"
+]
+
+];
+
+
+for(
+const p
+of
+Object.values(
+participantes
+)
+){
+
+
+const nums =
+
+Array.isArray(
+p.numeros
+)
+
+?
+
+p.numeros
+
+:
+
+[];
+
+
+for(
+const n
+of
+nums
+){
+
+
+rows.push([
+
+n,
+
+p.nome || "",
+
+p.telefone || "",
+
+p.quantidade || nums.length,
+
+p.valor || nums.length * VALOR,
+
+p.confirmadoEm
+
+?
+
+new Date(
+p.confirmadoEm
+)
+.toLocaleString(
+"pt-BR"
+)
+
+:
+
+""
+
+]);
+
+}
+
+}
+
+
+const csv =
+
+rows
+
+.map(
+
+r =>
+
+r
+
+.map(
+
+v =>
+
+`"${String(v).replaceAll('"','""')}"`
+
+)
+
+.join(";")
+
+)
+
+.join("\n");
+
+
+const blob =
+
+new Blob(
+
+[
+"\uFEFF",
+csv
+],
+
+{
+
+type:
+"text/csv;charset=utf-8;"
+
+}
+
+);
+
+
+const url =
+
+URL.createObjectURL(
+blob
+);
+
+
+const a =
+
+document
+.createElement(
+"a"
+);
+
+
+a.href =
+url;
+
+
+a.download =
+
+"participantes_rifa_dona_josi.csv";
+
+
+document.body
+.appendChild(a);
+
+
+a.click();
+
+
+a.remove();
+
+
+URL.revokeObjectURL(
+url
+);
+
+};
+
+
+/* SEGURANÇA DE TEXTO */
+
+
+function esc(v){
+
+return String(
+v ?? ""
+)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+);
+
+}
+
+
+selecao();
+
 </script>
+
 </body>
 </html>
