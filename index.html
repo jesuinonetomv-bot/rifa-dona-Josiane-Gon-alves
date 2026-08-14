@@ -38,8 +38,8 @@ header h1{margin:0 0 10px}.container{max-width:1150px;margin:auto;padding:18px}
 </head>
 <body>
 <header>
-<h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIANE AMARAL</h1>
-<p>Ajude nosa amiga Josiane Amaral na luta contra o câncer e concorra a uma <strong>Bola Oficial da Copa do Mundo de 2026</strong>, autografada pelo <strong>Dunga</strong>, capitão do Tetra de 1994.</p>
+<h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIENE AMARAL</h1>
+<p>Ajude na luta contra o câncer e concorra a uma <strong>Bola Oficial da Copa do Mundo</strong>, autografada por <strong>Dunga</strong>, capitão do Tetra de 1994.</p>
 </header>
 
 <main class="container">
@@ -58,7 +58,8 @@ O resultado da rifa será definido com base na <strong>Loteria Federal</strong>.
 <div style="max-width:780px;margin:20px auto;padding:18px;background:#fff8e1;border:1px solid #ffe082;border-radius:14px;text-align:left;line-height:1.7">
 <h3 style="color:#d81b60;text-align:center;margin-top:0">📋 Regra do sorteio</h3>
 <p>
-Será utilizada a <strong>última extração oficial da Loteria Federal no dia 11/09/2026</p>
+Será utilizada a <strong>última extração oficial da Loteria Federal realizada antes de 11/09/2026</strong>. Pelo calendário regular atual da CAIXA, a referência prevista é a extração de <strong>quarta-feira, 09/09/2026</strong>. Caso haja alteração oficial no calendário, valerá a última extração efetivamente realizada antes de 11/09/2026.
+</p>
 <p>
 O número vencedor será formado pelos <strong>3 últimos algarismos do 1º prêmio</strong>.
 </p>
@@ -66,7 +67,7 @@ O número vencedor será formado pelos <strong>3 últimos algarismos do 1º prê
 <strong>Exemplos:</strong><br>
 🏆 termina em <strong>527</strong> → número <strong>527</strong><br>
 🏆 termina em <strong>008</strong> → número <strong>008</strong><br>
-🏆 termina em <strong>1000</strong> → número <strong>1000</strong>
+🏆 termina em <strong>000</strong> → número <strong>1000</strong>
 </p>
 <p>
 Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pagamento confirmado</strong>, serão usados, nessa ordem, os 3 últimos algarismos do <strong>2º, 3º, 4º e 5º prêmios</strong>. Se nenhum deles corresponder a um número confirmado, será utilizada a próxima extração oficial da Loteria Federal, seguindo a mesma regra.
@@ -130,7 +131,7 @@ Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pa
 <h2>✅ Reserva realizada</h2>
 <p><strong>Números:</strong> <span id="resNums"></span></p>
 <p><strong>Valor:</strong> <span id="resValor"></span></p>
-<p>Os números ficam reservados por até <strong>1 hora</strong>. Envie o comprovante para confirmação.</p>
+<p>⏱️ Sua reserva é considerada válida por <strong>1 hora</strong>. Faça o PIX e envie o comprovante para garantir seus números.</p>
 </section>
 
 <section id="admin" class="card admin">
@@ -170,7 +171,8 @@ storageBucket:"rifa-dona-josi.firebasestorage.app",
 messagingSenderId:"418787514631",
 appId:"1:418787514631:web:360fc51850940fe41e4da2"
 };
-const ADMIN_UID="lioq8PxzEsQ4uKHC6YLAXmHXEK93",TOTAL=1000,VALOR=10,HORA=3600000;
+const ADMIN_UID="lioq8PxzEsQ4uKHC6YLAXmHXEK93",TOTAL=1000,VALOR=10;
+const WHATSAPP_PEDIDOS="5591993657435";
 const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
 let user=null,isAdmin=false,vendidos=new Set(),numDB={},selecionados=new Set(),reservas={},participantes={},offset=0,offRes=null,offPart=null,blocoAtual=1;
 
@@ -201,13 +203,12 @@ onValue(ref(db,"vendidos"),s=>{
 
 onValue(ref(db,"numeros"),s=>{
  numDB=s.val()||{};
- limparExpiradas();
  for(const n of [...selecionados])if(vendidos.has(n)||reservado(n))selecionados.delete(n);
  selecao();resumo();desenha();$("status").textContent="✅ Atualizado em tempo real.";
 },e=>{$("status").textContent="⚠️ Não foi possível carregar os números.";console.error(e)});
 
-function reservado(n){const x=numDB[fmt(n)];return !!(x&&x.status==="reservado"&&Number(x.expiraEm)>agora())}
-function qtdReservados(){return Object.values(numDB).filter(x=>x&&x.status==="reservado"&&Number(x.expiraEm)>agora()).length}
+function reservado(n){const x=numDB[fmt(n)];return !!(x&&x.status==="reservado") }
+function qtdReservados(){return Object.values(numDB).filter(x=>x&&x.status==="reservado").length}
 
 function desenhaBlocos(){
  const nav=$("blocosNav");
@@ -264,32 +265,23 @@ $("reservar").onclick=async()=>{
  if(!user||isAdmin)return;
  const nome=$("nome").value.trim(),fone=$("fone").value.trim(),foneLimpo=fone.replace(/\D/g,""),lista=[...selecionados].sort((a,b)=>a-b);
  if(nome.length<3||foneLimpo.length<10||!lista.length)return;
- const w=window.open("","_blank"),criadoEm=agora(),expiraEm=criadoEm+HORA,r=push(ref(db,"reservas")),id=r.key,nums=lista.map(fmt),total=nums.length*VALOR,up={};
- nums.forEach(n=>up[`numeros/${n}`]={status:"reservado",uid:user.uid,reservaId:id,expiraEm});
- up[`reservas/${id}`]={uid:user.uid,nome,telefone:fone,telefoneLimpo:foneLimpo,numeros:nums,quantidade:nums.length,valor:total,status:"reservado",criadoEm,expiraEm};
+ const w=window.open("","_blank"),criadoEm=agora(),r=push(ref(db,"reservas")),id=r.key,nums=lista.map(fmt),total=nums.length*VALOR,up={};
+ nums.forEach(n=>up[`numeros/${n}`]={status:"reservado",uid:user.uid,reservaId:id});
+ up[`reservas/${id}`]={uid:user.uid,nome,telefone:fone,telefoneLimpo:foneLimpo,numeros:nums,quantidade:nums.length,valor:total,status:"reservado",criadoEm};
  $("reservar").disabled=true;$("msgReserva").textContent="Reservando...";
  try{
   await update(ref(db),up);
   $("msgReserva").textContent="✅ Reserva realizada. Envie o comprovante pelo WhatsApp.";
   $("resInfo").classList.add("on");$("resNums").textContent=nums.join(", ");$("resValor").textContent=total.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-  const msg=`🎟️ NOVA RESERVA - RIFA DONA JOSI\n\nNome: ${nome}\nTelefone: ${fone}\n\nNúmeros: ${nums.join(", ")}\nQuantidade: ${nums.length}\nValor: ${total.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}\n\n⏱️ Reserva válida por 1 hora.\nFiz o pedido e vou enviar o comprovante do PIX.`;
-  const url=`https://wa.me/5591983151503?text=${encodeURIComponent(msg)}`;w?w.location.href=url:window.location.href=url;
+  const msg=`🎟️ NOVA RESERVA - RIFA DONA JOSI\n\nNome: ${nome}\nTelefone: ${fone}\n\nNúmeros: ${nums.join(", ")}\nQuantidade: ${nums.length}\nValor: ${total.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}\n\n⏱️ Sua reserva é considerada válida por 1 hora. Faça o PIX e envie o comprovante para garantir seus números.\nFiz o pedido e vou enviar o comprovante do PIX.`;
+  const url=`https://wa.me/${WHATSAPP_PEDIDOS}?text=${encodeURIComponent(msg)}`;w?w.location.href=url:window.location.href=url;
   selecionados.clear();$("nome").value="";$("fone").value="";selecao();
  }catch(e){
   console.error(e);if(w)w.close();$("msgReserva").textContent="❌ Não foi possível reservar. Algum número pode ter sido reservado por outra pessoa.";atualizaBotao();
  }
 };
 
-let limpando=false;
-async function limparExpiradas(){
- if(limpando||!user)return;
- const up={},ids=new Set(),t=agora();
- for(const [n,x] of Object.entries(numDB))if(x&&x.status==="reservado"&&Number(x.expiraEm)<=t){up[`numeros/${n}`]=null;if(x.reservaId)ids.add(x.reservaId)}
- ids.forEach(id=>up[`reservas/${id}`]=null);
- if(!Object.keys(up).length)return;
- limpando=true;try{await update(ref(db),up)}catch(e){}finally{limpando=false}
-}
-setInterval(limparExpiradas,30000);
+
 
 function resumo(){
  const v=vendidos.size,r=qtdReservados();$("qVend").textContent=v;$("qRes").textContent=r;$("qDisp").textContent=Math.max(0,TOTAL-v-r);
@@ -317,41 +309,24 @@ function carregarAdmin(){
 function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
 function mostraReservas(){
  const c=$("reservasAdmin");c.innerHTML="";
- const l=Object.entries(reservas).filter(([id,r])=>r&&r.status==="reservado"&&Number(r.expiraEm)>agora()).sort((a,b)=>Number(a[1].criadoEm||0)-Number(b[1].criadoEm||0));
+ const l=Object.entries(reservas).filter(([id,r])=>r&&r.status==="reservado").sort((a,b)=>Number(a[1].criadoEm||0)-Number(b[1].criadoEm||0));
  if(!l.length){c.textContent="Nenhuma reserva aguardando pagamento.";return}
  for(const [id,r] of l){
   const nums=Array.isArray(r.numeros)?r.numeros:[],d=document.createElement("div");d.className="item";
-  d.innerHTML=`<strong>${esc(r.nome)}</strong><br>📱 ${esc(r.telefone)}<br>🎟️ ${nums.map(esc).join(", ")}<br>💰 ${Number(r.valor||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}<br><br>⏱️ <strong>Tempo restante:</strong> <span class="tempo-restante" data-expira="${Number(r.expiraEm)}">Calculando...</span><div class="actions"><button class="btn btn-ok ok">✅ Confirmar pagamento</button><button class="btn btn-danger cancel">❌ Cancelar reserva</button></div>`;
+  const dataReserva=r.criadoEm?new Date(Number(r.criadoEm)).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit"}):"Horário não registrado";
+  d.innerHTML=`<strong>${esc(r.nome)}</strong><br>📱 ${esc(r.telefone)}<br>🎟️ ${nums.map(esc).join(", ")}<br>💰 ${Number(r.valor||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}<br><br>📅 <strong>Reserva realizada:</strong><br>${dataReserva}<br><small>Prazo informado ao participante: 1 hora.</small><div class="actions"><button class="btn btn-ok ok">✅ Confirmar pagamento</button><button class="btn btn-danger cancel">❌ Cancelar reserva</button></div>`;
   d.querySelector(".ok").onclick=()=>confirmar(id,r);d.querySelector(".cancel").onclick=()=>cancelar(id,r);c.appendChild(d);
  }
- atualizarContadoresAdmin();
 }
 
-function atualizarContadoresAdmin(){
- if(!isAdmin)return;
- document.querySelectorAll(".tempo-restante").forEach(el=>{
-  const restante=Number(el.dataset.expira)-agora();
-  if(restante<=0){
-   el.textContent="EXPIRADA";
-   el.style.color="#c62828";
-   el.style.fontWeight="bold";
-   return;
-  }
-  const minutos=Math.floor(restante/60000);
-  const segundos=Math.floor((restante%60000)/1000);
-  el.textContent=`${String(minutos).padStart(2,"0")}min ${String(segundos).padStart(2,"0")}s`;
-  el.style.color=minutos<5?"#c62828":minutos<15?"#ef6c00":"#2e7d32";
-  el.style.fontWeight="bold";
- });
-}
-setInterval(atualizarContadoresAdmin,1000);
+
 
 async function confirmar(id,r){
- if(!isAdmin||Number(r.expiraEm)<=agora()){alert("Reserva expirada.");limparExpiradas();return}
+ if(!isAdmin)return;
  if(!confirm(`Confirmar pagamento de ${r.nome}?`))return;
  const nums=Array.isArray(r.numeros)?r.numeros:[],up={},confirmadoEm=agora();
  nums.forEach(n=>{up[`vendidos/${n}`]=true;up[`numeros/${n}`]=null});
- up[`participantes/${id}`]={nome:r.nome||"",telefone:r.telefone||"",telefoneLimpo:r.telefoneLimpo||"",numeros:nums,quantidade:Number(r.quantidade||nums.length),valor:Number(r.valor||nums.length*VALOR),status:"pago",confirmadoEm};
+ up[`participantes/${id}`]={nome:r.nome||"",telefone:r.telefone||"",telefoneLimpo:r.telefoneLimpo||"",numeros:nums,quantidade:Number(r.quantidade||nums.length),valor:Number(r.valor||nums.length*VALOR),status:"pago",reservadoEm:Number(r.criadoEm||0),confirmadoEm};
  up[`reservas/${id}`]=null;
  try{await update(ref(db),up);alert("✅ Pagamento confirmado.")}catch(e){console.error(e);alert("Erro ao confirmar.")}
 }
@@ -369,7 +344,9 @@ function mostraParticipantes(){
  if(!l.length){c.textContent="Nenhum participante confirmado.";return}
  for(const [id,p] of l){
   const nums=Array.isArray(p.numeros)?p.numeros:[],d=document.createElement("div");d.className="item pago";
-  d.innerHTML=`<strong>${esc(p.nome)}</strong><br>📱 ${esc(p.telefone)}<br>🎟️ ${nums.map(esc).join(", ")}<br>💰 ${Number(p.valor||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}<div class="actions"><button class="btn btn-warn undo">↩️ Desfazer confirmação</button></div>`;
+  const reservadoTexto=p.reservadoEm?new Date(Number(p.reservadoEm)).toLocaleString("pt-BR"):"—";
+  const confirmadoTexto=p.confirmadoEm?new Date(Number(p.confirmadoEm)).toLocaleString("pt-BR"):"—";
+  d.innerHTML=`<strong>${esc(p.nome)}</strong><br>📱 ${esc(p.telefone)}<br>🎟️ ${nums.map(esc).join(", ")}<br>💰 ${Number(p.valor||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}<br>📅 Reserva: ${reservadoTexto}<br>✅ Confirmado: ${confirmadoTexto}<div class="actions"><button class="btn btn-warn undo">↩️ Desfazer confirmação</button></div>`;
   d.querySelector(".undo").onclick=()=>desfazer(id,p);c.appendChild(d);
  }
 }
@@ -384,8 +361,8 @@ async function desfazer(id,p){
 
 $("csv").onclick=()=>{
  if(!isAdmin)return;
- const rows=[["Numero","Nome","Telefone","Quantidade","Valor","ConfirmadoEm"]];
- for(const p of Object.values(participantes)){const nums=Array.isArray(p.numeros)?p.numeros:[];for(const n of nums)rows.push([n,p.nome||"",p.telefone||"",p.quantidade||nums.length,p.valor||nums.length*VALOR,p.confirmadoEm?new Date(p.confirmadoEm).toLocaleString("pt-BR"):""])}
+ const rows=[["Numero","Nome","Telefone","Quantidade","Valor","ReservadoEm","ConfirmadoEm"]];
+ for(const p of Object.values(participantes)){const nums=Array.isArray(p.numeros)?p.numeros:[];for(const n of nums)rows.push([n,p.nome||"",p.telefone||"",p.quantidade||nums.length,p.valor||nums.length*VALOR,p.reservadoEm?new Date(p.reservadoEm).toLocaleString("pt-BR"):"",p.confirmadoEm?new Date(p.confirmadoEm).toLocaleString("pt-BR"):""])}
  const csv=rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(";")).join("\n"),blob=new Blob(["\uFEFF",csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");
  a.href=url;a.download="participantes_rifa_dona_josi.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
 };
