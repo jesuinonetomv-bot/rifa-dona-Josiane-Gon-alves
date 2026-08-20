@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rifa Solidária - Josiene Amaral</title>
+<title>Rifa Solidária - Joseane Amaral</title>
 <style>
 :root{--rosa:#d81b60;--rosa2:#ec407a;--verde:#c8e6c9;--amarelo:#ffd54f;--laranja:#ffb74d;--vermelho:#e53935;--bg:#f4f5f7}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#2d2d2d}
@@ -12,6 +12,12 @@ header h1{margin:0 0 10px}.container{max-width:1150px;margin:auto;padding:18px}
 .card{background:#fff;border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 4px 18px #00000014}
 .hero{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:center}.hero img{width:100%;max-height:480px;object-fit:contain;border-radius:16px}
 .preco{font-size:2rem;font-weight:800;color:var(--rosa)}.center{text-align:center}
+.joseane-card{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:center}
+.joseane-card img{width:100%;max-height:480px;object-fit:cover;border-radius:16px}
+.joseane-card h2{color:var(--rosa);margin-top:0}
+.pix-info{max-width:760px;margin:18px auto;padding:16px;background:#fff8e1;border:1px solid #ffe082;border-radius:12px;text-align:left;line-height:1.6}
+.disponiveis-topo{background:#f1f8e9;border:1px solid #c5e1a5;border-radius:14px;padding:14px;margin:16px 0}
+.mostrar-mais{display:none;margin:14px auto 4px}
 .instagram{display:inline-block;padding:13px 22px;background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);color:#fff;text-decoration:none;border-radius:10px;font-weight:bold}
 .qrcode{width:240px;max-width:80%;display:block;margin:16px auto;border-radius:12px}
 .pixcode{max-width:700px;margin:15px auto;padding:15px;background:#f7f7f7;border:1px solid #ddd;border-radius:10px;word-break:break-all;text-align:left;font-size:13px}
@@ -33,52 +39,89 @@ header h1{margin:0 0 10px}.container{max-width:1150px;margin:auto;padding:18px}
 .fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;border:0;background:var(--rosa);color:#fff;font-size:24px;box-shadow:0 6px 18px #0004;cursor:pointer}
 .modal{display:none;position:fixed;inset:0;background:#0008;z-index:1000;padding:18px;align-items:center;justify-content:center}.modal.on{display:flex}.modalbox{width:min(520px,100%);background:#fff;border-radius:18px;padding:22px}
 .status{text-align:center;color:#666;margin-top:10px}footer{text-align:center;color:#666;padding:28px 15px 80px}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.blocos-nav{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(5,1fr)}.formgrid{grid-template-columns:1fr}}
+@media(max-width:760px){.hero,.joseane-card{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.blocos-nav{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(5,1fr)}.formgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
-<h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSIANE AMARAL</h1>
-<p>Ajude nossa amiga Joseane Amaral na luta contra o câncer e concorra a uma <strong>Bola Oficial da Copa do Mundo de 2026</strong>, autografada pelo <strong>Dunga</strong>, capitão do Tetra de 1994.</p>
+<h1>🎗️ RIFA SOLIDÁRIA EM PROL DE JOSEANE AMARAL</h1>
+<p>Ajude nossa amiga <strong>Joseane Amaral</strong> na luta contra o câncer e concorra a uma <strong>Bola Oficial da Copa do Mundo de 2026</strong>, autografada pelo <strong>Dunga</strong>, capitão do Tetra de 1994.</p>
 </header>
 
 <main class="container">
 <section class="card hero">
 <img src="bola.jpg" alt="Bola autografada por Dunga">
-<div><h2>🏆 Prêmio especial</h2><p>Bola Oficial da Copa do Mundo autografada pelo Dunga.</p><p>Todo o valor arrecadado será destinado à <strong>Josiane Amaral</strong>.</p><div class="preco">R$ 10,00 por número</div></div>
+<div><h2>🏆 Prêmio especial</h2><p>Bola Oficial da Copa do Mundo de 2026 autografada por Dunga.</p><p>Todo o valor arrecadado será destinado à <strong>Joseane Amaral</strong>.</p><div class="preco">R$ 10,00 por número</div></div>
+</section>
+
+<section class="card joseane-card">
+<img src="joseane.jpg" alt="Foto de Joseane Amaral">
+<div>
+<h2>💗 Nossa amiga Joseane Amaral</h2>
+<p>
+Esta rifa solidária foi criada para ajudar <strong>Joseane Amaral</strong> em sua luta contra o câncer.
+Cada número comprado representa uma contribuição para essa corrente de apoio.
+</p>
+<p>
+<strong>Participe, compartilhe e nos ajude a fazer a diferença.</strong>
+</p>
+</div>
 </section>
 
 <section class="card center">
 <h2 style="color:#d81b60">🎟️ Sorteio pela Loteria Federal</h2>
 <h2>11/09/2026</h2>
+
 <p style="font-size:18px;line-height:1.6">
 O resultado da rifa será definido com base na <strong>Loteria Federal</strong>.
 </p>
 
 <div style="max-width:780px;margin:20px auto;padding:18px;background:#fff8e1;border:1px solid #ffe082;border-radius:14px;text-align:left;line-height:1.7">
 <h3 style="color:#d81b60;text-align:center;margin-top:0">📋 Regra do sorteio</h3>
+
 <p>
-Será utilizada a <strong>última extração oficial da Loteria Federal realizada antes de 11/09/2026</strong>. Pelo calendário regular atual da CAIXA.
+Será utilizada a <strong>última extração oficial da Loteria Federal realizada antes de 11/09/2026</strong>,
+pelo calendário regular atual da CAIXA.
 </p>
+
 <p>
 O número vencedor será formado pelos <strong>3 últimos algarismos do 1º prêmio</strong>.
 </p>
+
 <p>
 <strong>Exemplos:</strong><br>
 🏆 termina em <strong>527</strong> → número <strong>527</strong><br>
 🏆 termina em <strong>008</strong> → número <strong>008</strong><br>
-🏆 termina em <strong>1000</strong> → número <strong>1000</strong>
+🏆 termina em <strong>000</strong> → número <strong>1000</strong>
 </p>
+
 <p>
-Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pagamento confirmado</strong>, serão usados, nessa ordem, os 3 últimos algarismos do <strong>2º, 3º, 4º e 5º prêmios</strong>. Se nenhum deles corresponder a um número confirmado, será utilizada a próxima extração oficial da Loteria Federal, seguindo a mesma regra.
+Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pagamento confirmado</strong>,
+serão usados, nessa ordem, os 3 últimos algarismos do <strong>2º, 3º, 4º e 5º prêmios</strong>.
+Se nenhum deles corresponder a um número confirmado, será utilizada a
+<strong>próxima extração oficial da Loteria Federal</strong>, seguindo a mesma regra.
 </p>
 </div>
 
-<a class="btn btn-dark" href="https://loterias.caixa.gov.br/Paginas/Federal.aspx" target="_blank" rel="noopener">🏛️ Consultar resultado oficial da CAIXA</a>
+<a class="btn btn-dark" href="https://loterias.caixa.gov.br/Paginas/Federal.aspx" target="_blank" rel="noopener">
+🏛️ Consultar resultado oficial da CAIXA
+</a>
 </section>
 
 <section class="card center">
-<h2>💖 PIX</h2><p><strong>Chave:</strong><br>91 98315-1503</p>
+<h2>💖 Informações do PIX</h2>
+
+<p><strong>Chave PIX:</strong><br>91 98315-1503</p>
+
+<div class="pix-info">
+<strong>Importante:</strong><br>
+O PIX utilizado nesta campanha está em nome de
+<strong>Jesuíno Mesquita Vale Neto</strong>, responsável pela arrecadação da rifa em apoio à Joseane Amaral.
+<br><br>
+Por isso, ao realizar o pagamento, o nome exibido pelo seu banco pode não ser o nome da Joseane.
+Confira a chave <strong>91 98315-1503</strong> antes de concluir o pagamento.
+</div>
+
 <img src="qrcode_pix.png" class="qrcode" alt="QR Code PIX">
 <h3 style="color:#d81b60">📋 PIX Copia e Cola</h3>
 <div class="pixcode"><span id="pixCodigo">00020126360014br.gov.bcb.pix0114+55919831515035204000053039865802BR5910NETO RUSSO6009Sao Paulo610901227-20062220518daqr548508072446326304AC6D</span></div>
@@ -106,7 +149,24 @@ Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pa
 <span><span class="dot" style="background:#e53935"></span>Vendido</span>
 </div>
 
-<div class="box center">
+<div class="disponiveis-topo">
+<strong>⭐ Disponíveis primeiro</strong>
+<p style="margin:6px 0 0">
+A página abre mostrando primeiro os números que ainda podem ser escolhidos.
+Se preferir, use os blocos abaixo para procurar uma faixa específica.
+</p>
+</div>
+
+<div id="blocosNav" class="blocos-nav"></div>
+<div id="grid" class="grid"></div>
+
+<button id="mostrarMais" class="btn btn-light mostrar-mais">
+Mostrar mais números disponíveis
+</button>
+
+<div id="status" class="status">Conectando ao Firebase...</div>
+
+<div class="box center" style="margin-top:18px">
 <div>Selecionados: <strong id="qSel">0</strong></div>
 <div id="listaSel" style="font-weight:bold;margin:10px 0">Nenhum número selecionado</div>
 <div>Total: <strong id="valorSel">R$ 0,00</strong></div>
@@ -114,6 +174,9 @@ Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pa
 
 <div class="box">
 <h3>👤 Seus dados</h3>
+<p style="margin-top:0;color:#666">
+Depois de escolher seus números, informe seus dados para concluir a reserva.
+</p>
 <div class="formgrid">
 <div><label>Nome completo</label><input id="nome" class="field" maxlength="80" placeholder="Seu nome completo"></div>
 <div><label>WhatsApp</label><input id="fone" class="field" inputmode="tel" maxlength="20" placeholder="91 99999-9999"></div>
@@ -121,10 +184,6 @@ Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pa
 <button id="reservar" class="btn btn-whats" disabled>⏱️ RESERVAR POR 1 HORA</button>
 <p id="msgReserva" style="font-weight:bold"></p>
 </div>
-
-<div id="blocosNav" class="blocos-nav"></div>
-<div id="grid" class="grid"></div>
-<div id="status" class="status">Conectando ao Firebase...</div>
 </section>
 
 <section id="resInfo" class="card resinfo">
@@ -144,7 +203,7 @@ Se o número correspondente ao 1º prêmio <strong>não estiver vendido e com pa
 </section>
 </main>
 
-<footer>❤️ Todo o valor arrecadado será destinado à Josiane Amaral.<br><br>Juntos podemos fazer a diferença.</footer>
+<footer>❤️ Rifa solidária em apoio à Joseane Amaral.<br><br>Juntos podemos fazer a diferença.</footer>
 <button id="gear" class="fab">⚙️</button>
 
 <div id="modal" class="modal">
@@ -174,7 +233,7 @@ appId:"1:418787514631:web:360fc51850940fe41e4da2"
 const ADMIN_UID="lioq8PxzEsQ4uKHC6YLAXmHXEK93",TOTAL=1000,VALOR=10;
 const WHATSAPP_PEDIDOS="5591993657435";
 const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
-let user=null,isAdmin=false,vendidos=new Set(),numDB={},selecionados=new Set(),reservas={},participantes={},offset=0,offRes=null,offPart=null,blocoAtual=1;
+let user=null,isAdmin=false,vendidos=new Set(),numDB={},selecionados=new Set(),reservas={},participantes={},offset=0,offRes=null,offPart=null,blocoAtual=0,limiteDisponiveis=100;
 
 const $=id=>document.getElementById(id),fmt=n=>String(n).padStart(3,"0"),agora=()=>Date.now()+offset;
 onValue(ref(db,".info/serverTimeOffset"),s=>offset=s.val()||0);
@@ -213,6 +272,18 @@ function qtdReservados(){return Object.values(numDB).filter(x=>x&&x.status==="re
 function desenhaBlocos(){
  const nav=$("blocosNav");
  nav.innerHTML="";
+
+ const btnDisp=document.createElement("button");
+ btnDisp.className="bloco-btn"+(blocoAtual===0?" ativo":"");
+ btnDisp.innerHTML=`⭐ Disponíveis<small>${Math.max(0,TOTAL-vendidos.size-qtdReservados())} livres</small>`;
+ btnDisp.onclick=()=>{
+  blocoAtual=0;
+  limiteDisponiveis=100;
+  desenha();
+  window.scrollTo({top:$("blocosNav").offsetTop-20,behavior:"smooth"});
+ };
+ nav.appendChild(btnDisp);
+
  const totalBlocos=Math.ceil(TOTAL/100);
  for(let b=1;b<=totalBlocos;b++){
   const inicio=(b-1)*100+1;
@@ -222,7 +293,6 @@ function desenhaBlocos(){
   btn.innerHTML=`${fmt(inicio)}–${fmt(fim)}<small>Bloco ${b}</small>`;
   btn.onclick=()=>{
    blocoAtual=b;
-   desenhaBlocos();
    desenha();
    window.scrollTo({top:$("blocosNav").offsetTop-20,behavior:"smooth"});
   };
@@ -232,11 +302,38 @@ function desenhaBlocos(){
 
 function desenha(){
  $("grid").innerHTML="";
- const inicio=(blocoAtual-1)*100+1;
- const fim=Math.min(blocoAtual*100,TOTAL);
- for(let i=inicio;i<=fim;i++){
-  const b=document.createElement("button");b.className="numero";b.textContent=fmt(i);
-  if(vendidos.has(i))b.classList.add("vend");else if(reservado(i))b.classList.add("res");else if(selecionados.has(i))b.classList.add("sel");
+
+ let numeros=[];
+
+ if(blocoAtual===0){
+  numeros=[];
+  for(let i=1;i<=TOTAL;i++){
+   if(!vendidos.has(i) && !reservado(i)) numeros.push(i);
+  }
+
+  // mantém os selecionados visíveis mesmo se estiverem além do limite atual
+  const visiveis=new Set(numeros.slice(0,limiteDisponiveis));
+  selecionados.forEach(n=>visiveis.add(n));
+  numeros=[...visiveis].sort((a,b)=>a-b);
+
+  $("mostrarMais").style.display=
+    numeros.length < (TOTAL-vendidos.size-qtdReservados()) ? "inline-block" : "none";
+ }else{
+  const inicio=(blocoAtual-1)*100+1;
+  const fim=Math.min(blocoAtual*100,TOTAL);
+  for(let i=inicio;i<=fim;i++) numeros.push(i);
+  $("mostrarMais").style.display="none";
+ }
+
+ for(const i of numeros){
+  const b=document.createElement("button");
+  b.className="numero";
+  b.textContent=fmt(i);
+
+  if(vendidos.has(i))b.classList.add("vend");
+  else if(reservado(i))b.classList.add("res");
+  else if(selecionados.has(i))b.classList.add("sel");
+
   b.onclick=()=>{
    if(isAdmin)return;
    if(vendidos.has(i)){alert("Número já vendido.");return}
@@ -245,11 +342,17 @@ function desenha(){
    selecao();
    desenha();
   };
+
   $("grid").appendChild(b);
  }
+
  desenhaBlocos();
 }
 
+$("mostrarMais").onclick=()=>{
+ limiteDisponiveis+=100;
+ desenha();
+};
 function selecao(){
  const l=[...selecionados].sort((a,b)=>a-b);
  $("qSel").textContent=l.length;$("listaSel").textContent=l.length?l.map(fmt).join(", "):"Nenhum número selecionado";
